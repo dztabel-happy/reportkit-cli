@@ -107,7 +107,7 @@ npm install -g @dztabel/reportkit
 Then link the skill into your Codex skills directory:
 
 ```bash
-git clone https://github.com/dztabel/reportkit-cli.git
+git clone https://github.com/dztabel-happy/reportkit-cli.git
 cd reportkit-cli
 
 SKILL_DIR="${CODEX_HOME:-$HOME/.codex}/skills"
