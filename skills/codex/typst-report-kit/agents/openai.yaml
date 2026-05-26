@@ -1,0 +1,4 @@
+interface:
+  display_name: "Typst Report Kit"
+  short_description: "Export polished Typst PDF reports from Markdown or JSON."
+  default_prompt: "Use $typst-report-kit to export this prepared report content as a polished PDF."

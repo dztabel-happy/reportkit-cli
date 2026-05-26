@@ -1,0 +1,102 @@
+# Report Markdown Contract
+
+Use this reference when writing Markdown input for `report-kit build`.
+
+## Metadata
+
+```markdown
+---
+title: 项目复盘报告
+subtitle: v0.1
+author: Report Kit
+client: 内部验证
+date: 2026-05-25
+confidentiality: 内部资料
+---
+```
+
+Supported keys: `title`, `subtitle`, `author`, `client`, `date`, `language`, `confidentiality`.
+
+You may omit `language`; it defaults to `zh-CN`. `zh` is accepted and normalized to `zh-CN`.
+
+## Build Diagnostics
+
+`build` returns `component_counts` and `warnings` in its JSON output. Use `component_counts` to check whether the report overused special components such as `definition_list` or `checklist`. Use `warnings` to catch mapping ambiguity, such as a single `术语：说明` style paragraph being kept as normal body text because definition lists require two or more consecutive definition lines.
+
+Each warning includes `severity`, `component`, `path`, `message`, and `suggestion`. If warnings are present, follow their suggestions, revise the Markdown/report JSON, and rebuild once before returning final output. If a warning is intentionally acceptable, mention it in the final response.
+
+## Sections
+
+- If frontmatter has `title`, `#` is a level-1 report section.
+- If frontmatter has no `title`, the first `#` becomes the cover title.
+- Use `##` and `###` for lower levels.
+
+## Blocks
+
+```markdown
+普通段落会变成 paragraph。
+
+- 无序列表会变成 bullet_list。
+
+1. 有序列表会变成 ordered_list。
+
+> 普通引用会变成 quote。
+```
+
+Prefer plain paragraphs, bullet lists, ordered lists, tables, formulas, figures, and callouts for normal consulting-report content. Use definition lists and checklists only when their semantics are exact.
+
+## Captions
+
+Place captions directly before every table, figure, chart, and display equation. Captions become formal report titles such as `表 2.1` and `图 3.1`, so do not leave them implicit. For figures, keep the image alt text short and different from the formal `图：` caption.
+
+```markdown
+表：组件映射表
+| 输入 | 组件 |
+| --- | --- |
+| 风险提示 | callout |
+
+图：结算瀑布图
+![备用图题](examples/assets/settlement_waterfall.pdf)
+
+公式：质量评分口径
+$$
+Q = 0.5 content + 0.3 layout + 0.2 diagnostics
+$$
+```
+
+Keep display formulas close to Typst math syntax. Put Chinese explanations in the paragraph or `公式：` caption, and avoid LaTeX text macros such as `\text{...}` inside `$$ ... $$`.
+
+## Callouts
+
+```markdown
+> [!risk] 主要风险
+> 如果输入语言过于自由，LLM 会把复杂性带回最终排版。
+```
+
+Supported kinds: `risk`, `warning`, `note`, `insight`.
+
+## Definition List
+
+Use definition lists sparingly, usually in glossary, field-description, or appendix sections. Each item must be a short noun-like term followed by its definition. Write at least two consecutive definition lines; a single `术语：说明` line is treated as a normal paragraph.
+
+Do not use definition lists for conclusions, recommendations, value judgments, or analysis sentences. Sentences such as `阶段性结论是：...` and `价值可以归纳为三层：...` should stay as normal paragraphs.
+
+```markdown
+组件契约：模板根据组件类型负责排版和编号。
+视觉回归：用样张检查 PDF 的真实表现。
+```
+
+## Checklist
+
+Use checklists for execution status, acceptance checks, action items, or delivery verification. Do not use checklists for strategic options, market judgments, or conceptual comparisons; use a table, bullet list, or paragraph instead.
+
+```markdown
+- [通过] build 入口：Markdown 可以输出 report.json。
+- [待调] 视觉样张：继续补充更多组件组合。
+```
+
+## Inline Math
+
+```markdown
+综合质量得分 $Q$ 由内容、版式和诊断三部分构成。
+```

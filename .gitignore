@@ -1,0 +1,5 @@
+node_modules/
+npm/platform-packages/*/report-kit
+npm/platform-packages/*/report-kit.exe
+.DS_Store
+*.tgz
