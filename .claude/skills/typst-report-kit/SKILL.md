@@ -38,6 +38,7 @@ For Markdown input, follow `references/report-markdown-contract.md`. If examples
 Minimum rules:
 
 - Put frontmatter at the top for title, subtitle, author, client, date, language, and confidentiality when available.
+- Use unnumbered headings such as `# 研究背景`; do not write `# 一、研究背景`, `# 1. 研究背景`, or `## （一）研究方法`.
 - Put `表：` before every Markdown table.
 - Put `图：` before every image or chart.
 - Put `公式：` before every display equation.
@@ -45,6 +46,12 @@ Minimum rules:
 - Use definition lists only for glossary or field definitions.
 - Use checklists only for action items, acceptance checks, or delivery status.
 - Keep analysis conclusions, recommendations, and value judgments as paragraphs, tables, normal lists, formulas, or callouts.
+
+Avoid these common LLM habits:
+
+- manual heading numbers: `# 一、背景`, `# 1. 背景`, `## （一）方法`;
+- symbolic checklist statuses: `- [✓]`, `- [△]`, `- [✗]`; prefer `- [通过]`, `- [观察]`, `- [未通过]`;
+- conclusion sentences as glossary lines; use paragraphs or callouts instead.
 
 ## Guardrails
 

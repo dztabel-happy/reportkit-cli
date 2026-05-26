@@ -21,6 +21,7 @@ This skill drives the local CLI. It does not research, gather facts, or decide s
 For Markdown input, follow `references/report-markdown-contract.md`. If the task needs examples, read `references/examples.md`.
 
 - frontmatter for title, subtitle, author, client, date, language, confidentiality;
+- unnumbered section headings such as `# 研究背景`; do not write `# 一、研究背景`, `# 1. 研究背景`, or `## （一）研究方法`;
 - `表：` before every Markdown table;
 - `图：` before every image or chart, with image alt text kept short and not identical to the formal figure caption;
 - `公式：` before every display equation `$$ ... $$`; keep the formula body simple and Typst-friendly, and put Chinese explanations in surrounding prose or the caption instead of LaTeX text macros such as `\text{...}`;
@@ -30,6 +31,12 @@ For Markdown input, follow `references/report-markdown-contract.md`. If the task
 - fenced code blocks for JSON/config/code.
 
 Use definition lists only for glossary or field definitions. Use checklists only for action, acceptance, or delivery status. Keep analysis conclusions, recommendations, and value judgments as paragraphs, tables, normal lists, formulas, or callouts.
+
+Avoid these common LLM habits:
+
+- manual heading numbers: `# 一、背景`, `# 1. 背景`, `## （一）方法`;
+- symbolic checklist statuses: `- [✓]`, `- [△]`, `- [✗]`; prefer `- [通过]`, `- [观察]`, `- [未通过]`;
+- conclusion sentences as glossary lines; use paragraphs or callouts instead.
 
 When the content includes tables, figures, charts, or display equations, add explicit concise captions before the block. Do this in the Markdown before running the CLI instead of relying on build warnings to repair missing captions later.
 

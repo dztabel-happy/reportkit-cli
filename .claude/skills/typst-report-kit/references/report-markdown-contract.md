@@ -30,6 +30,7 @@ Each warning includes `severity`, `component`, `path`, `message`, and `suggestio
 - If frontmatter has `title`, `#` is a level-1 report section.
 - If frontmatter has no `title`, the first `#` becomes the cover title.
 - Use `##` and `###` for lower levels.
+- Do not manually number headings. Write `# 研究背景与方法论`, not `# 一、研究背景与方法论`; write `## 资料来源`, not `## （一）资料来源`.
 
 ## Blocks
 
@@ -93,6 +94,25 @@ Use checklists for execution status, acceptance checks, action items, or deliver
 ```markdown
 - [通过] build 入口：Markdown 可以输出 report.json。
 - [待调] 视觉样张：继续补充更多组件组合。
+```
+
+Use Chinese status words such as `通过`, `观察`, `待调`, `未通过`. Do not prefer symbolic statuses such as `[✓]`, `[△]`, or `[✗]`.
+
+## Negative Examples
+
+```markdown
+# 一、研究背景
+## （一）资料来源
+- [✓] 资料整理：已完成。
+阶段性结论：当前方案值得推进。
+```
+
+```markdown
+# 研究背景
+## 资料来源
+- [通过] 资料整理：已完成。
+> [!insight] 阶段性结论
+> 当前方案值得推进。
 ```
 
 ## Inline Math
