@@ -80,7 +80,7 @@ It is useful when the user asks for a formal PDF report, consulting-style delive
 
 ## Agent Usage
 
-An agent can call:
+Agents can call the CLI directly:
 
 ```bash
 report-kit build prepared-report.md --out ./report
@@ -89,6 +89,43 @@ report-kit build prepared-report.md --out ./report
 Then read `report/build-result.json` or stdout to locate the generated PDF.
 
 Successful builds return JSON with `ok: true`, artifact paths, component counts, and warnings.
+
+## Codex Skill
+
+This repository includes a Codex skill that teaches an agent when and how to call the CLI:
+
+```text
+skills/codex/typst-report-kit
+```
+
+Install the npm package first:
+
+```bash
+npm install -g @dztabel/reportkit
+```
+
+Then link the skill into your Codex skills directory:
+
+```bash
+git clone https://github.com/dztabel/reportkit-cli.git
+cd reportkit-cli
+
+SKILL_DIR="${CODEX_HOME:-$HOME/.codex}/skills"
+mkdir -p "$SKILL_DIR"
+ln -sfn "$(pwd)/skills/codex/typst-report-kit" "$SKILL_DIR/typst-report-kit"
+```
+
+If your Codex or agent runtime uses a different skills directory, copy or symlink `skills/codex/typst-report-kit` into that directory instead.
+
+After installing the skill, ask the agent to use it on prepared content:
+
+```text
+Use $typst-report-kit to export this prepared report content as a polished PDF:
+
+<paste the prepared report content here>
+```
+
+The skill should save the content as Markdown or use an existing `report.json`, run `report-kit build`, inspect warnings, rebuild once if needed, and return the generated PDF path plus the editable `report.json` path.
 
 ## Platform Support
 
