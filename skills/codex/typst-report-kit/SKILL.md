@@ -1,11 +1,13 @@
 ---
 name: typst-report-kit
-description: Use when existing report content, Markdown, or report.json needs a polished Typst PDF deliverable, especially formal report PDF, report export, Chinese business/research/project report, or final PDF output. Do not use for web research, fact gathering, or deciding source material.
+description: Use when prepared report content, uploaded user materials, Markdown, or report.json should be delivered as a polished PDF through the local report-kit CLI. Use at the final report-export step after content is available, when a task naturally needs a formal PDF deliverable, or when the user explicitly asks to use this skill. This skill formats and exports reports; it does not gather sources by itself.
 ---
 
 # Typst Report Kit
 
-Use this skill when report content already exists and the next step is final delivery as a polished PDF. This skill drives the local CLI; it does not research, gather facts, or decide source material.
+Use this skill when the next deliverable is a polished PDF report. The user may have uploaded materials for Codex to organize, the current task may naturally end in a report, or the user may explicitly ask to use this skill.
+
+This skill drives the local CLI. It does not research, gather facts, or decide source material by itself.
 
 ## Principle
 
@@ -44,7 +46,7 @@ Use `--no-pdf` only when Typst is unavailable or the user explicitly wants JSON/
 
 ## Workflow
 
-1. Confirm there is existing report content or create a Report Markdown draft from content already in the conversation.
+1. Prepare the final report content from the materials already available in the conversation, uploaded files, or an existing Markdown / `report.json` input.
 2. Save the draft as `content.md` or use an existing `report.json`.
 3. Run `report-kit build <input> --out <output-dir>`.
 4. Read the JSON result printed by the CLI.

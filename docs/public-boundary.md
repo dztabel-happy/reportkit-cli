@@ -13,7 +13,7 @@ It contains:
 - the npm wrapper package metadata;
 - the `report-kit` Node.js command shim;
 - public platform package metadata;
-- the Codex skill and its public references;
+- the Codex skill, Claude Code skill, and their public references;
 - user-facing installation and usage documentation.
 
 It does not contain:
