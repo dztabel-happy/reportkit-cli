@@ -71,6 +71,8 @@ Keep display formulas close to Typst math syntax. Put Chinese explanations in th
 
 Keep body tables within 7-8 columns when possible. If `build` returns `table_too_many_columns` or `table_dense_layout`, do not solve it only by accepting smaller text. Prefer splitting the table by topic, moving detail rows to an appendix, transposing a few-row many-metric table, or moving long explanations into paragraphs/callouts around the table.
 
+Use `表[compact]：title` for a slightly dense table, and `表[landscape]：title` only when a wide table must remain intact.
+
 ## Callouts
 
 ```markdown
