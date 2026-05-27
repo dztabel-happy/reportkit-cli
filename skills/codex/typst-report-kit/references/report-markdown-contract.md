@@ -67,6 +67,10 @@ $$
 
 Keep display formulas close to Typst math syntax. Put Chinese explanations in the paragraph or `公式：` caption, and avoid LaTeX text macros such as `\text{...}` inside `$$ ... $$`.
 
+## Table Width
+
+Keep body tables within 7-8 columns when possible. If `build` returns `table_too_many_columns` or `table_dense_layout`, do not solve it only by accepting smaller text. Prefer splitting the table by topic, moving detail rows to an appendix, transposing a few-row many-metric table, or moving long explanations into paragraphs/callouts around the table.
+
 ## Callouts
 
 ```markdown

@@ -40,6 +40,7 @@ Minimum rules:
 - Put frontmatter at the top for title, subtitle, author, client, date, language, and confidentiality when available.
 - Use unnumbered headings such as `# 研究背景`; do not write `# 一、研究背景`, `# 1. 研究背景`, or `## （一）研究方法`.
 - Put `表：` before every Markdown table.
+- Keep body tables within 7-8 columns when possible; split, transpose, or move very wide detail tables to an appendix instead of shrinking text.
 - Put `图：` before every image or chart.
 - Put `公式：` before every display equation.
 - Use `> [!risk]`, `> [!warning]`, `> [!note]`, or `> [!insight]` for callouts.
