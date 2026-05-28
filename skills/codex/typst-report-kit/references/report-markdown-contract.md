@@ -48,7 +48,7 @@ Prefer plain paragraphs, bullet lists, ordered lists, tables, formulas, figures,
 
 ## Captions
 
-Place captions directly before every table, figure, chart, and display equation. Captions become formal report titles such as `表 2.1` and `图 3.1`, so do not leave them implicit. For figures, keep the image alt text short and different from the formal `图：` caption.
+Place captions directly before every table, figure, chart, and display equation. Captions become formal report titles such as `表 2.1` and `图 3.1`, so do not leave them implicit. For figures, keep the image alt text short and different from the formal `图：` caption. Image paths are resolved relative to the Markdown file.
 
 ```markdown
 表：组件映射表
@@ -65,7 +65,7 @@ Q = 0.5 content + 0.3 layout + 0.2 diagnostics
 $$
 ```
 
-Keep display formulas close to Typst math syntax. Put Chinese explanations in the paragraph or `公式：` caption, and avoid LaTeX text macros such as `\text{...}` inside `$$ ... $$`.
+Keep display formulas close to Typst math syntax. Put Chinese explanations in the paragraph or `公式：` caption, use Typst math symbols such as `times` and `dot`, and avoid LaTeX text macros such as `\text{...}` inside `$$ ... $$`. Prefer putting `公式：` before the formula block; if it is immediately after the block, the CLI will attach it to the previous formula.
 
 ## Table Width
 

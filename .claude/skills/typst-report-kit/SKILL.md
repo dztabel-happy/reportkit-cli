@@ -41,8 +41,8 @@ Minimum rules:
 - Use unnumbered headings such as `# 研究背景`; do not write `# 一、研究背景`, `# 1. 研究背景`, or `## （一）研究方法`.
 - Put `表：` before every Markdown table.
 - Keep body tables within 7-8 columns when possible; split, transpose, or move very wide detail tables to an appendix. Use `表[compact]：title` for slightly dense tables and `表[landscape]：title` only when a wide table must remain intact.
-- Put `图：` before every image or chart.
-- Put `公式：` before every display equation.
+- Put `图：` before every image or chart; image paths are resolved relative to the Markdown file.
+- Put `公式：` before every display equation. Use Typst math symbols such as `times` and `dot`.
 - Use `> [!risk]`, `> [!warning]`, `> [!note]`, or `> [!insight]` for callouts.
 - Use definition lists only for glossary or field definitions.
 - Use checklists only for action items, acceptance checks, or delivery status.

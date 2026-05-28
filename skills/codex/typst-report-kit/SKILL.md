@@ -24,8 +24,8 @@ For Markdown input, follow `references/report-markdown-contract.md`. If the task
 - unnumbered section headings such as `# 研究背景`; do not write `# 一、研究背景`, `# 1. 研究背景`, or `## （一）研究方法`;
 - `表：` before every Markdown table;
 - keep body tables within 7-8 columns when possible; split, transpose, or move very wide detail tables to an appendix. Use `表[compact]：title` for slightly dense tables and `表[landscape]：title` only when a wide table must remain intact;
-- `图：` before every image or chart, with image alt text kept short and not identical to the formal figure caption;
-- `公式：` before every display equation `$$ ... $$`; keep the formula body simple and Typst-friendly, and put Chinese explanations in surrounding prose or the caption instead of LaTeX text macros such as `\text{...}`;
+- `图：` before every image or chart, with image alt text kept short and not identical to the formal figure caption; image paths are resolved relative to the Markdown file;
+- `公式：` before every display equation `$$ ... $$`; keep the formula body simple and Typst-friendly, use Typst math symbols such as `times` and `dot`, and put Chinese explanations in surrounding prose or the caption instead of LaTeX text macros such as `\text{...}`;
 - `> [!risk]`, `> [!warning]`, `> [!note]`, `> [!insight]` for callouts;
 - two or more consecutive `术语：说明` lines for definition lists;
 - `- [状态] 标签：说明` lines for checklists;
