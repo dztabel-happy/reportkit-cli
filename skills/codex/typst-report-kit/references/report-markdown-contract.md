@@ -23,7 +23,9 @@ You may omit `language`; it defaults to `zh-CN`. `zh` is accepted and normalized
 
 `build` returns `component_counts` and `warnings` in its JSON output. Use `component_counts` to check whether the report overused special components such as `definition_list` or `checklist`. Use `warnings` to catch mapping ambiguity, such as a single `术语：说明` style paragraph being kept as normal body text because definition lists require two or more consecutive definition lines.
 
-Each warning includes `severity`, `component`, `path`, `message`, and `suggestion`. If warnings are present, follow their suggestions, revise the Markdown/report JSON, and rebuild once before returning final output. If a warning is intentionally acceptable, mention it in the final response.
+Each warning includes `severity`, `component`, `path`, `message`, and `suggestion`. `ok: true` only means the PDF was produced; it does not mean the report is ready to return. If warnings are present, follow their suggestions, revise the Markdown/report JSON, and rebuild once before returning final output. If a warning is intentionally acceptable, mention it in the final response.
+
+For `checklist_item_missing_detail`, change `- [状态] 说明内容` into `- [状态] 标签：说明内容`, or convert the item to a normal bullet list when it is not an action, acceptance, or delivery-status checklist.
 
 ## Sections
 

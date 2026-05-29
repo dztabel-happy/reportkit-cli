@@ -33,6 +33,14 @@ For Markdown input, follow `references/report-markdown-contract.md`. If the task
 
 Use definition lists only for glossary or field definitions. Use checklists only for action, acceptance, or delivery status. Keep analysis conclusions, recommendations, and value judgments as paragraphs, tables, normal lists, formulas, or callouts.
 
+## Delivery Gate
+
+`ok: true` only means the PDF was produced. It is not enough to return success.
+
+Before returning the final PDF path, inspect `warnings` in the CLI JSON result or `build-result.json`. If any warning is present, revise the Markdown/report JSON according to the warning `suggestion` and rebuild once. Return with warnings only when the warning is intentionally acceptable, and mention the remaining warning clearly.
+
+For `checklist_item_missing_detail`, do not leave `- [状态] 说明内容` as-is. Either change it to `- [状态] 标签：说明内容`, or convert it to a normal bullet list if it is not a delivery/status checklist.
+
 Avoid these common LLM habits:
 
 - manual heading numbers: `# 一、背景`, `# 1. 背景`, `## （一）方法`;
@@ -60,7 +68,7 @@ Use `--no-pdf` only when Typst is unavailable or the user explicitly wants JSON/
 4. Read the JSON result printed by the CLI.
 5. Verify the returned `report_path`, `pdf_path`, and `artifacts.build_result` exist. `build-result.json` should match the stdout JSON.
 6. Inspect `component_counts` and `warnings`.
-7. If `warnings` is non-empty, follow each warning's `suggestion`, revise the Markdown/report JSON, and rebuild once before returning final output. If a warning is intentionally acceptable, mention it in the response.
+7. If `warnings` is non-empty, treat the output as needing revision unless the warning is intentionally acceptable. Follow each warning's `suggestion`, revise the Markdown/report JSON, and rebuild once before returning final output.
 8. Return the PDF path, editable `report.json` path, and any useful diagnostics.
 
 ## Revision Workflow

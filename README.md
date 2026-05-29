@@ -9,7 +9,7 @@ LLM / Agent 准备内容，ReportKit 负责排版输出 PDF。一个 CLI，接�
 ```bash
 npm install -g @dztabel/reportkit
 report-kit --version
-# report-kit 0.1.12 (cli-contract 0.1)
+# report-kit 0.1.13 (cli-contract 0.1)
 ```
 
 ## 安装 Skill
@@ -54,7 +54,7 @@ report/report.typ       # Typst 源文件
 report/build-result.json # 构建诊断（ok/warnings/component_counts）
 ```
 
-Agent 读取 `build-result.json` 确认 `ok: true`，把 PDF 路径返回给用户即可。
+Agent 读取 `build-result.json` 后，必须同时确认 `ok: true` 和 `warnings: []`。如果存在 warnings，先按提示修正文稿并重建一次；只有明确接受剩余 warning 时，才把 PDF 路径返回给用户。
 
 ### 典型场景
 
@@ -117,6 +117,7 @@ $$
 
 | 版本 | 变更 |
 | --- | --- |
+| 0.1.13 | 强化 warnings 交付门禁；缺少说明的 checklist 自动使用更稳的两列兜底排版 |
 | 0.1.12 | 修复 Windows 全局 npm shim 路径识别；固定 Typst 编译输出为 UTF-8，避免中文 Windows GBK 解码失败 |
 | 0.1.11 | 发布 macOS arm64、Linux x64、Windows x64 平台二进制；Windows 平台包改用 `win32-x64` 标准命名 |
 | 0.1.10 | 增加跨平台 CI 构建与平台包发布流程 |
