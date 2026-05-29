@@ -1,6 +1,6 @@
 {
   "name": "@dztabel/reportkit-darwin-arm64",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "macOS arm64 ReportKit binary with bundled Typst runtime.",
   "license": "UNLICENSED",
   "publishConfig": {
