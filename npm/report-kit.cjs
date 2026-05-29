@@ -58,7 +58,7 @@ function platformPackageName() {
     return `@dztabel/reportkit-linux-${arch}`;
   }
   if (process.platform === "win32") {
-    return `@dztabel/reportkit-windows-${arch}`;
+    return `@dztabel/reportkit-win32-${arch}`;
   }
   return null;
 }

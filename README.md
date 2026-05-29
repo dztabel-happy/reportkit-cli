@@ -2,14 +2,14 @@
 
 LLM / Agent 准备内容，ReportKit 负责排版输出 PDF。一个 CLI，接收 Markdown 或 `report.json`，生成稳定、可复现的 Typst 报告。
 
-> **平台支持：** 当前仅支持 macOS Apple Silicon (arm64)。Linux 和 Windows 会通过后续平台包扩展。
+> **平台支持：** 当前支持 macOS Apple Silicon (arm64)、Linux x64、Windows x64。安装主包时会自动拉取对应平台二进制。
 
 ## 安装
 
 ```bash
 npm install -g @dztabel/reportkit
 report-kit --version
-# report-kit 0.1.9 (cli-contract 0.1)
+# report-kit 0.1.11 (cli-contract 0.1)
 ```
 
 ## 安装 Skill
@@ -117,6 +117,8 @@ $$
 
 | 版本 | 变更 |
 | --- | --- |
+| 0.1.11 | 发布 macOS arm64、Linux x64、Windows x64 平台二进制；Windows 平台包改用 `win32-x64` 标准命名 |
+| 0.1.10 | 增加跨平台 CI 构建与平台包发布流程 |
 | 0.1.9 | 修复正文页码格式（罗马数字→阿拉伯数字），目录引用页码修正 |
 | 0.1.8 | 修复标题层级扁平化、`times` 乘号渲染、图片路径解析、后置公式标题容错、checklist 符号映射、横向页空白 |
 | 0.1.7 | 首个公开测试版 |
