@@ -2,12 +2,6 @@
 
 This repository is the public entry point for ReportKit.
 
-Local repository path:
-
-```text
-/Users/abel/project/zhiyun-product/cli-mcp/reportkit-cli
-```
-
 It contains:
 
 - the npm wrapper package metadata;
