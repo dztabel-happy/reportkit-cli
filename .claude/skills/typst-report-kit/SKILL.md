@@ -16,6 +16,7 @@ This skill drives the local CLI. It does not research, gather facts, or decide s
 - Return both the PDF path and editable `report.json` path.
 - Keep direct Typst edits for template authors or debugging only.
 - Default to the current project/workspace directory for artifacts.
+- Use the default Chinese delivery-report template unless the user explicitly asks for another template.
 
 ## Output Location
 
