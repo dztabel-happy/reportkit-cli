@@ -9,7 +9,7 @@ LLM / Agent 准备内容，ReportKit 负责排版输出 PDF。一个 CLI，接�
 ```bash
 npm install -g @dztabel/reportkit
 report-kit --version
-# report-kit 0.1.13 (cli-contract 0.1)
+# report-kit 0.1.14 (cli-contract 0.1)
 ```
 
 ## 安装 Skill
@@ -117,6 +117,7 @@ $$
 
 | 版本 | 变更 |
 | --- | --- |
+| 0.1.14 | 将目录 leader 改为强制字体的中点填充，修复 Windows 上目录点线变粗变散的问题 |
 | 0.1.13 | 强化 warnings 交付门禁；缺少说明的 checklist 自动使用更稳的两列兜底排版 |
 | 0.1.12 | 修复 Windows 全局 npm shim 路径识别；固定 Typst 编译输出为 UTF-8，避免中文 Windows GBK 解码失败 |
 | 0.1.11 | 发布 macOS arm64、Linux x64、Windows x64 平台二进制；Windows 平台包改用 `win32-x64` 标准命名 |
