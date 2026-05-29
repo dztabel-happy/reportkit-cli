@@ -48,6 +48,8 @@ For `checklist_item_missing_detail`, change `- [状态] 说明内容` into `- [�
 
 Prefer plain paragraphs, bullet lists, ordered lists, tables, formulas, figures, and callouts for normal consulting-report content. Use definition lists and checklists only when their semantics are exact.
 
+Do not use `---` as a decorative separator in body content. The CLI tolerates standalone horizontal-rule lines and strips leading decorative `--- ` prefixes, but normal reports should use headings, paragraphs, callouts, or page breaks instead of decorative Markdown rules.
+
 ## Captions
 
 Place captions directly before every table, figure, chart, and display equation. Captions become formal report titles such as `表 2.1` and `图 3.1`, so do not leave them implicit. For figures, keep the image alt text short and different from the formal `图：` caption. Image paths are resolved relative to the Markdown file.

@@ -15,6 +15,13 @@ This skill drives the local CLI. It does not research, gather facts, or decide s
 - Use the CLI to generate `report.json`, Typst source, PDF, and diagnostics.
 - Return both the PDF path and editable `report.json` path.
 - Keep direct Typst edits for template authors or debugging only.
+- Default to the current project/workspace directory for artifacts.
+
+## Output Location
+
+Unless the user gives an explicit output path, write report artifacts under `./output_report` in the current project/workspace directory.
+
+Use a stable file name for the editable source, such as `./output_report/content.md`, and run the CLI with `--out ./output_report`. If `./output_report` already contains a report that should be preserved, use a versioned sibling such as `./output_report_v2`.
 
 ## Input Contract
 
@@ -52,8 +59,8 @@ When the content includes tables, figures, charts, or display equations, add exp
 ## CLI Commands
 
 ```bash
-report-kit build content.md --out ./outputs/report
-report-kit build report.json --out ./outputs/report
+report-kit build ./output_report/content.md --out ./output_report
+report-kit build ./output_report/report.json --out ./output_report
 report-kit validate report.json
 report-kit preview report.json --out ./outputs/preview
 ```
@@ -63,8 +70,8 @@ Use `--no-pdf` only when Typst is unavailable or the user explicitly wants JSON/
 ## Workflow
 
 1. Prepare the final report content from the materials already available in the conversation, uploaded files, or an existing Markdown / `report.json` input.
-2. Save the draft as `content.md` or use an existing `report.json`.
-3. Run `report-kit build <input> --out <output-dir>`.
+2. Save the draft as `./output_report/content.md`, or use an existing `report.json` when editing a prior build.
+3. Run `report-kit build <input> --out ./output_report` unless the user asked for another path.
 4. Read the JSON result printed by the CLI.
 5. Verify the returned `report_path`, `pdf_path`, and `artifacts.build_result` exist. `build-result.json` should match the stdout JSON.
 6. Inspect `component_counts` and `warnings`.
@@ -77,7 +84,8 @@ When the user asks for changes:
 
 1. Edit Report Markdown if the source was Markdown, or edit `report.json` if that is the active editable artifact.
 2. Re-run `build` for Markdown or `build <report.json>` for JSON.
-3. Keep the same output directory only if overwriting is intended; otherwise use a versioned folder such as `outputs/report-v2`.
+3. Keep the same output directory only if overwriting is intended; otherwise use a versioned folder such as `./output_report_v2`.
+4. Return the new PDF path and the edited source path so the user or agent can continue iterating.
 
 ## Guardrails
 

@@ -11,6 +11,8 @@ npm install -g @dztabel/reportkit @dztabel/reportkit-darwin-arm64
 report-kit --version
 ```
 
+规范命令名是 `report-kit`。`reportkit` 也作为兼容别名提供，但文档和 skill 统一使用 `report-kit`。
+
 按平台选择对应命令：
 
 ```bash
@@ -131,6 +133,7 @@ $$
 
 | 版本 | 变更 |
 | --- | --- |
+| 0.1.16 | 增加 `reportkit` 命令别名；skill 默认输出到 `./output_report`；过滤正文中的 Markdown 分隔线装饰符 |
 | 0.1.15 | 安装文档改为显式安装平台包；缺少平台包时 CLI 输出精确补装命令 |
 | 0.1.14 | 将目录 leader 改为强制字体的中点填充，修复 Windows 上目录点线变粗变散的问题 |
 | 0.1.13 | 强化 warnings 交付门禁；缺少说明的 checklist 自动使用更稳的两列兜底排版 |
