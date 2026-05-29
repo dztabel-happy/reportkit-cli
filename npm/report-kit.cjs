@@ -106,13 +106,18 @@ function runBundledBinary(binary) {
 function runPythonPrototypeIfAvailable() {
   if (!fs.existsSync(path.join(packageRoot, "report_kit", "cli.py"))) {
     const packageName = platformPackageName();
+    const version = packageVersion();
     console.error("report-kit: platform package is missing.");
     console.error(
       packageName
         ? `report-kit: expected optional dependency ${packageName} to provide the binary.`
         : `report-kit: unsupported platform ${process.platform}/${process.arch}.`,
     );
-    console.error("report-kit: reinstall report-kit or install a package built for this platform.");
+    if (packageName) {
+      console.error(`report-kit: run "npm install -g @dztabel/reportkit@${version} ${packageName}@${version}".`);
+    } else {
+      console.error("report-kit: install a package built for this platform.");
+    }
     process.exit(1);
   }
   const python = selectPython();
@@ -124,6 +129,15 @@ function runPythonPrototypeIfAvailable() {
     },
     stdio: "inherit",
   });
+}
+
+function packageVersion() {
+  try {
+    const packageJson = JSON.parse(fs.readFileSync(path.join(packageRoot, "package.json"), "utf8"));
+    return packageJson.version || "latest";
+  } catch (_) {
+    return "latest";
+  }
 }
 
 function utf8Env() {

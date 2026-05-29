@@ -2,15 +2,29 @@
 
 LLM / Agent 准备内容，ReportKit 负责排版输出 PDF。一个 CLI，接收 Markdown 或 `report.json`，生成稳定、可复现的 Typst 报告。
 
-> **平台支持：** 当前支持 macOS Apple Silicon (arm64)、Linux x64、Windows x64。安装主包时会自动拉取对应平台二进制。
+> **平台支持：** 当前支持 macOS Apple Silicon (arm64)、Linux x64、Windows x64。推荐显式安装主包和当前平台二进制，避免全局 npm 配置跳过 optional dependencies。
 
 ## 安装
 
 ```bash
-npm install -g @dztabel/reportkit
+npm install -g @dztabel/reportkit @dztabel/reportkit-darwin-arm64
 report-kit --version
-# report-kit 0.1.14 (cli-contract 0.1)
 ```
+
+按平台选择对应命令：
+
+```bash
+# macOS Apple Silicon
+npm install -g @dztabel/reportkit @dztabel/reportkit-darwin-arm64
+
+# Linux x64
+npm install -g @dztabel/reportkit @dztabel/reportkit-linux-x64
+
+# Windows x64
+npm install -g @dztabel/reportkit @dztabel/reportkit-win32-x64
+```
+
+如果只安装主包后看到 `platform package is missing`，按报错中的命令补装对应平台包即可。
 
 ## 安装 Skill
 
@@ -117,6 +131,7 @@ $$
 
 | 版本 | 变更 |
 | --- | --- |
+| 0.1.15 | 安装文档改为显式安装平台包；缺少平台包时 CLI 输出精确补装命令 |
 | 0.1.14 | 将目录 leader 改为强制字体的中点填充，修复 Windows 上目录点线变粗变散的问题 |
 | 0.1.13 | 强化 warnings 交付门禁；缺少说明的 checklist 自动使用更稳的两列兜底排版 |
 | 0.1.12 | 修复 Windows 全局 npm shim 路径识别；固定 Typst 编译输出为 UTF-8，避免中文 Windows GBK 解码失败 |
