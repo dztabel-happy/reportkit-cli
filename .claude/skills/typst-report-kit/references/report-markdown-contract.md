@@ -21,9 +21,11 @@ Supported keys: `title`, `subtitle`, `author`, `client`, `date`, `language`, `co
 
 ## Build Diagnostics
 
-`build` returns `component_counts` and `warnings`. Use `component_counts` to check whether special components such as `definition_list` or `checklist` are overused.
+`build` returns `component_counts` and `warnings` in its JSON output. Use `component_counts` to check whether the report overused special components such as `definition_list` or `checklist`. Use `warnings` to catch mapping ambiguity, such as a single `术语：说明` style paragraph being kept as normal body text because definition lists require two or more consecutive definition lines.
 
-Each warning includes `severity`, `component`, `path`, `message`, and `suggestion`. If warnings are present, revise the Markdown or `report.json` once before returning the final PDF path, unless the warning is intentionally acceptable.
+Each warning includes `severity`, `component`, `path`, `message`, and `suggestion`. `ok: true` only means the PDF was produced; it does not mean the report is ready to return. If warnings are present, follow their suggestions, revise the Markdown/report JSON, and rebuild once before returning final output. If a warning is intentionally acceptable, mention it in the final response.
+
+For `checklist_item_missing_detail`, change `- [状态] 说明内容` into `- [状态] 标签：说明内容`, or convert the item to a normal bullet list when it is not an action, acceptance, or delivery-status checklist.
 
 ## Sections
 
@@ -44,11 +46,13 @@ Each warning includes `severity`, `component`, `path`, `message`, and `suggestio
 > 普通引用会变成 quote。
 ```
 
-Prefer paragraphs, bullet lists, ordered lists, tables, formulas, figures, and callouts for normal report content.
+Prefer plain paragraphs, bullet lists, ordered lists, tables, formulas, figures, and callouts for normal consulting-report content. Use definition lists and checklists only when their semantics are exact.
+
+Do not use `---` as a decorative separator in body content. The CLI tolerates standalone horizontal-rule lines and strips leading decorative `--- ` prefixes, but normal reports should use headings, paragraphs, callouts, or page breaks instead of decorative Markdown rules.
 
 ## Captions
 
-Place captions directly before every table, figure, chart, and display equation. Image paths are resolved relative to the Markdown file.
+Place captions directly before every table, figure, chart, and display equation. Captions become formal report titles such as `表 2.1` and `图 3.1`, so do not leave them implicit. For figures, keep the image alt text short and different from the formal `图：` caption. Image paths are resolved relative to the Markdown file.
 
 ```markdown
 表：组件映射表
@@ -65,7 +69,24 @@ Q = 0.5 content + 0.3 layout + 0.2 diagnostics
 $$
 ```
 
-Keep display formulas close to Typst math syntax. Put Chinese explanations in surrounding prose or the `公式：` caption. Use Typst math symbols such as `times` and `dot`. Avoid LaTeX text macros such as `\text{...}` inside `$$ ... $$`. Prefer putting `公式：` before the formula block; if it is immediately after the block, the CLI will attach it to the previous formula.
+Keep display formulas close to Typst math syntax. Put Chinese explanations in the paragraph or `公式：` caption, use Typst math symbols such as `times` and `dot`, and avoid LaTeX text macros such as `\text{...}` inside `$$ ... $$`. Use real symbols for common operators: write `-`, `+`, `%`, not words such as `minus`, `plus`, or `percent`. For English abbreviations in formulas, keep them as complete identifiers, for example `"ROI"` or `ROI`, not `R O I`. Prefer putting `公式：` before the formula block; if it is immediately after the block, the CLI will attach it to the previous formula.
+
+Good:
+
+```markdown
+公式：AI 项目综合 ROI 计算
+$$
+ROI = (Delta_P times T - C) / C times 100%
+$$
+```
+
+Avoid:
+
+```markdown
+$$
+R O I = (Delta P times T minus C) / C times 100 percent
+$$
+```
 
 ## Table Width
 
@@ -95,7 +116,7 @@ Do not use definition lists for conclusions, recommendations, value judgments, o
 
 ## Checklist
 
-Use checklists for execution status, acceptance checks, action items, or delivery verification. Do not use checklists for strategic options, market judgments, or conceptual comparisons.
+Use checklists for execution status, acceptance checks, action items, or delivery verification. Do not use checklists for strategic options, market judgments, or conceptual comparisons; use a table, bullet list, or paragraph instead.
 
 ```markdown
 - [通过] build 入口：Markdown 可以输出 report.json。

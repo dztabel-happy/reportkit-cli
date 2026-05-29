@@ -69,7 +69,24 @@ Q = 0.5 content + 0.3 layout + 0.2 diagnostics
 $$
 ```
 
-Keep display formulas close to Typst math syntax. Put Chinese explanations in the paragraph or `公式：` caption, use Typst math symbols such as `times` and `dot`, and avoid LaTeX text macros such as `\text{...}` inside `$$ ... $$`. Prefer putting `公式：` before the formula block; if it is immediately after the block, the CLI will attach it to the previous formula.
+Keep display formulas close to Typst math syntax. Put Chinese explanations in the paragraph or `公式：` caption, use Typst math symbols such as `times` and `dot`, and avoid LaTeX text macros such as `\text{...}` inside `$$ ... $$`. Use real symbols for common operators: write `-`, `+`, `%`, not words such as `minus`, `plus`, or `percent`. For English abbreviations in formulas, keep them as complete identifiers, for example `"ROI"` or `ROI`, not `R O I`. Prefer putting `公式：` before the formula block; if it is immediately after the block, the CLI will attach it to the previous formula.
+
+Good:
+
+```markdown
+公式：AI 项目综合 ROI 计算
+$$
+ROI = (Delta_P times T - C) / C times 100%
+$$
+```
+
+Avoid:
+
+```markdown
+$$
+R O I = (Delta P times T minus C) / C times 100 percent
+$$
+```
 
 ## Table Width
 

@@ -89,7 +89,7 @@ Agent 搜集资料、组织内容、按 skill 规则写 Markdown、调用 CLI �
 - frontmatter 写 title、subtitle、author、date 等元数据
 - 标题不编号：写 `# 研究背景`，不写 `# 一、研究背景`
 - 表格前加 `表：标题`，图片前加 `图：标题`，公式前加 `公式：标题`
-- 公式用 Typst math 语法，乘号写 `times`，不写 `\times`
+- 公式用 Typst math 语法，乘号写 `times`，减号和百分号写 `-`、`%`，不要写 `minus`、`percent`
 - 提示框用 `> [!risk]`、`> [!warning]`、`> [!note]`、`> [!insight]`
 - 宽表用 `表[landscape]：标题`，紧凑表用 `表[compact]：标题`
 - checklist 状态用中文：`- [通过]`、`- [观察]`、`- [未通过]`
@@ -133,7 +133,8 @@ $$
 
 | 版本 | 变更 |
 | --- | --- |
-| 0.1.16 | 增加 `reportkit` 命令别名；skill 默认输出到 `./output_report`；过滤正文中的 Markdown 分隔线装饰符 |
+| 0.1.17 | 增加公式文本运算符诊断；同步 Claude Code skill 的输出目录、warnings 和公式规则 |
+| 0.1.17 | 增加 `reportkit` 命令别名；skill 默认输出到 `./output_report`；过滤正文中的 Markdown 分隔线装饰符 |
 | 0.1.15 | 安装文档改为显式安装平台包；缺少平台包时 CLI 输出精确补装命令 |
 | 0.1.14 | 将目录 leader 改为强制字体的中点填充，修复 Windows 上目录点线变粗变散的问题 |
 | 0.1.13 | 强化 warnings 交付门禁；缺少说明的 checklist 自动使用更稳的两列兜底排版 |
