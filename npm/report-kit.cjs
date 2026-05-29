@@ -3,7 +3,7 @@ const { spawnSync } = require("node:child_process");
 const fs = require("node:fs");
 const path = require("node:path");
 
-const packageRoot = path.resolve(__dirname, "..");
+const packageRoot = findPackageRoot();
 const pythonPath = process.env.PYTHONPATH
   ? `${packageRoot}${path.delimiter}${process.env.PYTHONPATH}`
   : packageRoot;
@@ -29,6 +29,38 @@ function findBundledBinary() {
     path.join(packageRoot, "dist", "report-kit"),
   ];
   return candidates.find((candidate) => fs.existsSync(candidate));
+}
+
+function findPackageRoot() {
+  const candidates = [
+    path.resolve(__dirname, ".."),
+    path.resolve(__dirname, "node_modules", "@dztabel", "reportkit"),
+    path.resolve(__dirname, "..", "node_modules", "@dztabel", "reportkit"),
+  ];
+
+  for (const candidate of candidates) {
+    if (isReportKitPackageRoot(candidate)) {
+      return candidate;
+    }
+  }
+
+  try {
+    const packageJson = require.resolve("@dztabel/reportkit/package.json", {
+      paths: [__dirname, process.cwd()],
+    });
+    return path.dirname(packageJson);
+  } catch (_) {
+    return path.resolve(__dirname, "..");
+  }
+}
+
+function isReportKitPackageRoot(candidate) {
+  try {
+    const packageJson = JSON.parse(fs.readFileSync(path.join(candidate, "package.json"), "utf8"));
+    return packageJson.name === "@dztabel/reportkit" && fs.existsSync(path.join(candidate, "npm", "report-kit.cjs"));
+  } catch (_) {
+    return false;
+  }
 }
 
 function findPlatformPackageBinary() {
@@ -66,7 +98,7 @@ function platformPackageName() {
 function runBundledBinary(binary) {
   return spawnSync(binary, process.argv.slice(2), {
     cwd: process.cwd(),
-    env: process.env,
+    env: utf8Env(),
     stdio: "inherit",
   });
 }
@@ -87,11 +119,19 @@ function runPythonPrototypeIfAvailable() {
   return spawnSync(python, ["-m", "report_kit.cli", ...process.argv.slice(2)], {
     cwd: process.cwd(),
     env: {
-      ...process.env,
+      ...utf8Env(),
       PYTHONPATH: pythonPath,
     },
     stdio: "inherit",
   });
+}
+
+function utf8Env() {
+  return {
+    ...process.env,
+    PYTHONUTF8: process.env.PYTHONUTF8 || "1",
+    PYTHONIOENCODING: process.env.PYTHONIOENCODING || "utf-8",
+  };
 }
 
 function selectPython() {

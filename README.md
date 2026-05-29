@@ -9,7 +9,7 @@ LLM / Agent 准备内容，ReportKit 负责排版输出 PDF。一个 CLI，接�
 ```bash
 npm install -g @dztabel/reportkit
 report-kit --version
-# report-kit 0.1.11 (cli-contract 0.1)
+# report-kit 0.1.12 (cli-contract 0.1)
 ```
 
 ## 安装 Skill
@@ -117,6 +117,7 @@ $$
 
 | 版本 | 变更 |
 | --- | --- |
+| 0.1.12 | 修复 Windows 全局 npm shim 路径识别；固定 Typst 编译输出为 UTF-8，避免中文 Windows GBK 解码失败 |
 | 0.1.11 | 发布 macOS arm64、Linux x64、Windows x64 平台二进制；Windows 平台包改用 `win32-x64` 标准命名 |
 | 0.1.10 | 增加跨平台 CI 构建与平台包发布流程 |
 | 0.1.9 | 修复正文页码格式（罗马数字→阿拉伯数字），目录引用页码修正 |
