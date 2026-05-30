@@ -21,11 +21,9 @@ You may omit `language`; it defaults to `zh-CN`. `zh` is accepted and normalized
 
 ## Build Diagnostics
 
-`build` returns `component_counts` and `warnings` in its JSON output. Use `component_counts` to check whether the report overused special components such as `definition_list` or `checklist`. Use `warnings` to catch mapping ambiguity, such as a single `术语：说明` style paragraph being kept as normal body text because definition lists require two or more consecutive definition lines.
+`build` returns `component_counts` and `warnings` in its JSON output. Use `component_counts` to check whether the report uses the expected mix of paragraphs, lists, tables, figures, equations, callouts, and code blocks. Markdown input no longer turns `术语：说明` or `- [状态] ...` into special glossary/checklist components; those lines stay as paragraphs or normal lists.
 
 Each warning includes `severity`, `component`, `path`, `message`, and `suggestion`. `ok: true` only means the PDF was produced; it does not mean the report is ready to return. If warnings are present, follow their suggestions, revise the Markdown/report JSON, and rebuild once before returning final output. If a warning is intentionally acceptable, mention it in the final response.
-
-For `checklist_item_missing_detail`, change `- [状态] 说明内容` into `- [状态] 标签：说明内容`, or convert the item to a normal bullet list when it is not an action, acceptance, or delivery-status checklist.
 
 ## Sections
 
@@ -47,7 +45,7 @@ For `checklist_item_missing_detail`, change `- [状态] 说明内容` into `- [�
 > 普通引用会变成 quote。
 ```
 
-Prefer plain paragraphs, bullet lists, ordered lists, tables, formulas, figures, and callouts for normal consulting-report content. Use definition lists and checklists only when their semantics are exact.
+Prefer plain paragraphs, bullet lists, ordered lists, tables, formulas, figures, and callouts for normal consulting-report content. Use tables for field/status/action summaries when structure matters; otherwise use paragraphs or normal lists.
 
 Do not use `---` as a decorative separator in body content. The CLI tolerates standalone horizontal-rule lines and strips leading decorative `--- ` prefixes, but normal reports should use headings, paragraphs, callouts, or page breaks instead of decorative Markdown rules.
 
@@ -106,27 +104,16 @@ Use `表[compact]：title` for a slightly dense table, and `表[landscape]：tit
 
 Supported kinds: `risk`, `warning`, `note`, `insight`.
 
-## Definition List
-
-Use definition lists sparingly, usually in glossary, field-description, or appendix sections. Each item must be a short noun-like term followed by its definition. Write at least two consecutive definition lines; a single `术语：说明` line is treated as a normal paragraph.
-
-Do not use definition lists for conclusions, recommendations, value judgments, or analysis sentences. Sentences such as `阶段性结论是：...` and `价值可以归纳为三层：...` should stay as normal paragraphs.
+## Terms and Status Notes
 
 ```markdown
 组件契约：模板根据组件类型负责排版和编号。
 视觉回归：用样张检查 PDF 的真实表现。
+- schema 校验：report.json 必须先通过结构校验。
+- 组件映射：普通冒号句不应变成特殊组件。
 ```
 
-## Checklist
-
-Use checklists for execution status, acceptance checks, action items, or delivery verification. Do not use checklists for strategic options, market judgments, or conceptual comparisons; use a table, bullet list, or paragraph instead.
-
-```markdown
-- [通过] build 入口：Markdown 可以输出 report.json。
-- [待调] 视觉样张：继续补充更多组件组合。
-```
-
-Use Chinese status words such as `通过`, `观察`, `待调`, `未通过`. Do not prefer symbolic statuses such as `[✓]`, `[△]`, or `[✗]`.
+These become `paragraph` or `bullet_list`. If a field glossary or action/status summary needs formal structure, use a table. Explicit `report.json` may still contain legacy `definition_list` and `checklist` blocks; Markdown/skill should not generate them for ordinary reports.
 
 ## Negative Examples
 
@@ -140,7 +127,7 @@ Use Chinese status words such as `通过`, `观察`, `待调`, `未通过`. Do n
 ```markdown
 # 研究背景
 ## 资料来源
-- [通过] 资料整理：已完成。
+- 资料整理已完成。
 > [!insight] 阶段性结论
 > 当前方案值得推进。
 ```

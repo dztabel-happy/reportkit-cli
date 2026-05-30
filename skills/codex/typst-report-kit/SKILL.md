@@ -35,11 +35,9 @@ For Markdown input, follow `references/report-markdown-contract.md`. If the task
 - `图：` before every image or chart, with image alt text kept short and not identical to the formal figure caption; image paths are resolved relative to the Markdown file;
 - `公式：` before every display equation `$$ ... $$`; keep the formula body simple and Typst-friendly, use Typst math symbols such as `times` and `dot`, use real symbols for subtraction and percentages such as `-` and `100%`, and put Chinese explanations in surrounding prose or the caption instead of LaTeX text macros such as `\text{...}`;
 - `> [!risk]`, `> [!warning]`, `> [!note]`, `> [!insight]` for callouts;
-- two or more consecutive `术语：说明` lines for definition lists;
-- `- [状态] 标签：说明` lines for checklists;
 - fenced code blocks for JSON/config/code.
 
-Use definition lists only for glossary or field definitions. Use checklists only for action, acceptance, or delivery status. Keep analysis conclusions, recommendations, and value judgments as paragraphs, tables, normal lists, formulas, or callouts.
+Keep analysis conclusions, recommendations, field explanations, status notes, and action items as paragraphs, tables, normal lists, formulas, or callouts. Do not create glossary/checklist-style blocks in Markdown unless the user provides an existing `report.json` that already uses them.
 
 Use `###` only when the subsection deserves to appear in the table of contents. If a heading is only grouping examples, company tiers, scenarios, or source notes inside a section, prefer a normal list, table rows, or short paragraphs so the table of contents stays readable. Keep end-of-report source notes compact; a short paragraph or compact table is usually better than a long trailing bullet list.
 
@@ -49,12 +47,9 @@ Use `###` only when the subsection deserves to appear in the table of contents. 
 
 Before returning the final PDF path, inspect `warnings` in the CLI JSON result or `build-result.json`. If any warning is present, revise the Markdown/report JSON according to the warning `suggestion` and rebuild once. Return with warnings only when the warning is intentionally acceptable, and mention the remaining warning clearly.
 
-For `checklist_item_missing_detail`, do not leave `- [状态] 说明内容` as-is. Either change it to `- [状态] 标签：说明内容`, or convert it to a normal bullet list if it is not a delivery/status checklist.
-
 Avoid these common LLM habits:
 
 - manual heading numbers: `# 一、背景`, `# 1. 背景`, `## （一）方法`;
-- symbolic checklist statuses: `- [✓]`, `- [△]`, `- [✗]`; prefer `- [通过]`, `- [观察]`, `- [未通过]`;
 - conclusion sentences as glossary lines; use paragraphs or callouts instead.
 
 When the content includes tables, figures, charts, or display equations, add explicit concise captions before the block. Do this in the Markdown before running the CLI instead of relying on build warnings to repair missing captions later.
