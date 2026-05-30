@@ -55,6 +55,8 @@ Minimum rules:
 
 Use definition lists only for glossary or field definitions. Use checklists only for action, acceptance, or delivery status. Keep analysis conclusions, recommendations, and value judgments as paragraphs, tables, normal lists, formulas, or callouts.
 
+Use `###` only when the subsection deserves to appear in the table of contents. If a heading is only grouping examples, company tiers, scenarios, or source notes inside a section, prefer a normal list, table rows, or short paragraphs so the table of contents stays readable. Keep end-of-report source notes compact; a short paragraph or compact table is usually better than a long trailing bullet list.
+
 ## Delivery Gate
 
 `ok: true` only means the PDF was produced. It is not enough to return success.

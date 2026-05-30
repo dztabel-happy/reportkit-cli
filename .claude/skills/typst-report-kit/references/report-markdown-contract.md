@@ -33,6 +33,7 @@ For `checklist_item_missing_detail`, change `- [状态] 说明内容` into `- [�
 - If frontmatter has no `title`, the first `#` becomes the cover title.
 - Use `##` and `###` for lower levels.
 - Do not manually number headings. Write `# 研究背景与方法论`, not `# 一、研究背景与方法论`; write `## 资料来源`, not `## （一）资料来源`.
+- `###` is allowed when the subsection should appear in the table of contents. If it only groups examples, company tiers, scenarios, or source notes inside a section, prefer a normal list, table rows, or short paragraphs.
 
 ## Blocks
 
@@ -49,6 +50,8 @@ For `checklist_item_missing_detail`, change `- [状态] 说明内容` into `- [�
 Prefer plain paragraphs, bullet lists, ordered lists, tables, formulas, figures, and callouts for normal consulting-report content. Use definition lists and checklists only when their semantics are exact.
 
 Do not use `---` as a decorative separator in body content. The CLI tolerates standalone horizontal-rule lines and strips leading decorative `--- ` prefixes, but normal reports should use headings, paragraphs, callouts, or page breaks instead of decorative Markdown rules.
+
+Keep end-of-report source notes compact. A short paragraph or compact table is usually better than a long trailing bullet list, because long source lists can leave a sparse final page.
 
 ## Captions
 
