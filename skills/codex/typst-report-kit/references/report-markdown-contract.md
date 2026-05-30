@@ -21,7 +21,7 @@ You may omit `language`; it defaults to `zh-CN`. `zh` is accepted and normalized
 
 ## Build Diagnostics
 
-`build` returns `component_counts` and `warnings` in its JSON output. Use `component_counts` to check whether the report uses the expected mix of paragraphs, lists, tables, figures, equations, callouts, and code blocks. Markdown input no longer turns `术语：说明` or `- [状态] ...` into special glossary/checklist components; those lines stay as paragraphs or normal lists.
+`build` returns `component_counts` and `warnings` in its JSON output. Use `component_counts` to check whether the report uses the expected mix of paragraphs, lists, tables, figures, equations, and code blocks. Markdown input no longer turns `术语：说明` or `- [状态] ...` into special glossary/checklist components; those lines stay as paragraphs or normal lists.
 
 Each warning includes `severity`, `component`, `path`, `message`, and `suggestion`. `ok: true` only means the PDF was produced; it does not mean the report is ready to return. If warnings are present, follow their suggestions, revise the Markdown/report JSON, and rebuild once before returning final output. If a warning is intentionally acceptable, mention it in the final response.
 
@@ -45,9 +45,9 @@ Each warning includes `severity`, `component`, `path`, `message`, and `suggestio
 > 普通引用会变成 quote。
 ```
 
-Prefer plain paragraphs, bullet lists, ordered lists, tables, formulas, figures, and callouts for normal consulting-report content. Use tables for field/status/action summaries when structure matters; otherwise use paragraphs or normal lists.
+Prefer plain paragraphs, bullet lists, ordered lists, tables, formulas, and figures for normal consulting-report content. Use tables for field/status/action summaries when structure matters; otherwise use paragraphs or normal lists. Callouts are low-frequency emphasis blocks, not default containers for ordinary conclusions or risks.
 
-Do not use `---` as a decorative separator in body content. The CLI tolerates standalone horizontal-rule lines and strips leading decorative `--- ` prefixes, but normal reports should use headings, paragraphs, callouts, or page breaks instead of decorative Markdown rules.
+Do not use `---` as a decorative separator in body content. The CLI tolerates standalone horizontal-rule lines and strips leading decorative `--- ` prefixes, but normal reports should use headings, paragraphs, or natural page flow instead of decorative Markdown rules.
 
 Keep end-of-report source notes compact. A short paragraph or compact table is usually better than a long trailing bullet list, because long source lists can leave a sparse final page.
 
@@ -59,7 +59,7 @@ Place captions directly before every table, figure, chart, and display equation.
 表：组件映射表
 | 输入 | 组件 |
 | --- | --- |
-| 风险提示 | callout |
+| 重点说明 | paragraph |
 
 图：结算瀑布图
 ![备用图题](examples/assets/settlement_waterfall.pdf)
@@ -91,18 +91,18 @@ $$
 
 ## Table Width
 
-Keep body tables within 7-8 columns when possible. If `build` returns `table_too_many_columns` or `table_dense_layout`, do not solve it only by accepting smaller text. Prefer splitting the table by topic, moving detail rows to an appendix, transposing a few-row many-metric table, or moving long explanations into paragraphs/callouts around the table.
+Keep body tables within 7-8 columns when possible. If `build` returns `table_too_many_columns` or `table_dense_layout`, do not solve it only by accepting smaller text. Prefer splitting the table by topic, moving detail rows to an appendix, transposing a few-row many-metric table, or moving long explanations into paragraphs around the table.
 
 Use `表[compact]：title` for a slightly dense table, and `表[landscape]：title` only when a wide table must remain intact.
 
 ## Callouts
 
 ```markdown
-> [!risk] 主要风险
-> 如果输入语言过于自由，LLM 会把复杂性带回最终排版。
+> [!note] 关键说明
+> 这句话必须从正文中被快速扫到，且普通段落不足以承载它。
 ```
 
-Supported kinds: `risk`, `warning`, `note`, `insight`.
+Supported kinds: `note`, `insight`, `risk`, `warning`. Use callouts sparingly. `note` and `insight` are acceptable for one or two high-signal statements that would be missed in normal prose. Do not use `risk` or `warning` merely because a report has a risk section; ordinary risks belong in paragraphs, lists, or tables. Use `risk` or `warning` only when the user explicitly asks for a visual risk/warning box.
 
 ## Terms and Status Notes
 
@@ -122,14 +122,15 @@ These become `paragraph` or `bullet_list`. If a field glossary or action/status 
 ## （一）资料来源
 - [✓] 资料整理：已完成。
 阶段性结论：当前方案值得推进。
+> [!risk] 一般风险
+> 普通风险说明不应默认放进橙色风险框。
 ```
 
 ```markdown
 # 研究背景
 ## 资料来源
 - 资料整理已完成。
-> [!insight] 阶段性结论
-> 当前方案值得推进。
+阶段性结论是：当前方案值得推进。
 ```
 
 ## Inline Math

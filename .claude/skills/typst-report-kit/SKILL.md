@@ -47,11 +47,12 @@ Minimum rules:
 - Keep body tables within 7-8 columns when possible; split, transpose, or move very wide detail tables to an appendix. Use `表[compact]：title` for slightly dense tables and `表[landscape]：title` only when a wide table must remain intact.
 - Put `图：` before every image or chart, with image alt text kept short and not identical to the formal figure caption; image paths are resolved relative to the Markdown file.
 - Put `公式：` before every display equation `$$ ... $$`; keep the formula body simple and Typst-friendly, use Typst math symbols such as `times` and `dot`, use real symbols for subtraction and percentages such as `-` and `100%`, and put Chinese explanations in surrounding prose or the caption instead of LaTeX text macros such as `\text{...}`.
-- Use `> [!risk]`, `> [!warning]`, `> [!note]`, or `> [!insight]` for callouts.
 - Use fenced code blocks for JSON/config/code.
-- Keep analysis conclusions, recommendations, and value judgments as paragraphs, tables, normal lists, formulas, or callouts.
+- Keep analysis conclusions, recommendations, and value judgments as paragraphs, tables, normal lists, or formulas.
 
-Keep field explanations, status notes, and action items as paragraphs, tables, normal lists, formulas, or callouts. Do not create glossary/checklist-style blocks in Markdown unless the user provides an existing `report.json` that already uses them.
+Keep field explanations, status notes, and action items as paragraphs, tables, normal lists, or formulas. Do not create glossary/checklist-style blocks in Markdown unless the user provides an existing `report.json` that already uses them.
+
+Use callouts sparingly. For most professional reports, prefer normal paragraphs, lists, or tables. `> [!note]` and `> [!insight]` are acceptable only for one or two high-signal statements that would be missed in normal prose. Do not use `> [!risk]` or `> [!warning]` merely because the report has a risk section; keep ordinary risk analysis in paragraphs or tables. Use `risk` or `warning` callouts only when the user explicitly asks for a visual risk/warning box.
 
 Use `###` only when the subsection deserves to appear in the table of contents. If a heading is only grouping examples, company tiers, scenarios, or source notes inside a section, prefer a normal list, table rows, or short paragraphs so the table of contents stays readable. Keep end-of-report source notes compact; a short paragraph or compact table is usually better than a long trailing bullet list.
 
@@ -61,10 +62,12 @@ Use `###` only when the subsection deserves to appear in the table of contents. 
 
 Before returning the final PDF path, inspect `warnings` in the CLI JSON result or `build-result.json`. If any warning is present, revise the Markdown/report JSON according to the warning `suggestion` and rebuild once. Return with warnings only when the warning is intentionally acceptable, and mention the remaining warning clearly.
 
+Also inspect `component_counts.callout`. If the report contains callouts and the user did not ask for emphasis boxes, confirm they are only one or two light `note`/`insight` blocks. Rewrite unintended `risk`/`warning` callouts as normal paragraphs or table rows and rebuild before returning.
+
 Avoid these common LLM habits:
 
 - manual heading numbers: `# 一、背景`, `# 1. 背景`, `## （一）方法`;
-- conclusion sentences as glossary lines; use paragraphs or callouts instead.
+- conclusion sentences as glossary lines; use paragraphs, tables, or normal lists instead.
 
 When the content includes tables, figures, charts, or display equations, add explicit concise captions before the block. Do this in the Markdown before running the CLI instead of relying on build warnings to repair missing captions later.
 
