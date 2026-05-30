@@ -1,6 +1,6 @@
 {
   "name": "@dztabel/reportkit",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "description": "Agent-facing CLI for exporting prepared content into polished Typst PDF reports.",
   "license": "UNLICENSED",
   "publishConfig": {
@@ -11,9 +11,9 @@
     "reportkit": "npm/report-kit.cjs"
   },
   "optionalDependencies": {
-    "@dztabel/reportkit-darwin-arm64": "0.1.23",
-    "@dztabel/reportkit-linux-x64": "0.1.23",
-    "@dztabel/reportkit-win32-x64": "0.1.23"
+    "@dztabel/reportkit-darwin-arm64": "0.1.24",
+    "@dztabel/reportkit-linux-x64": "0.1.24",
+    "@dztabel/reportkit-win32-x64": "0.1.24"
   },
   "files": [
     "npm/report-kit.cjs"
