@@ -67,7 +67,9 @@ report-kit build content.md --out ./report
 report/report.pdf       # 最终 PDF
 report/report.json      # 可编辑的结构化报告
 report/report.typ       # Typst 源文件
-report/build-result.json # 构建诊断（ok/warnings/component_counts）
+report/<template-id>.typ # 本次使用的模板副本；默认通常是 executive-cn.typ
+report/render-result.json # 渲染诊断（Typst/PDF 输出路径）
+report/build-result.json # 构建诊断（ok/warnings/component_counts/artifacts）
 ```
 
 Agent 读取 `build-result.json` 后，必须同时确认 `ok: true` 和 `warnings: []`。如果存在 warnings，先按提示修正文稿并重建一次；只有明确接受剩余 warning 时，才把 PDF 路径返回给用户。
