@@ -15,7 +15,9 @@ confidentiality: 内部资料
 ---
 ```
 
-Supported keys: `title`, `subtitle`, `author`, `client`, `date`, `language`, `confidentiality`.
+Supported keys: `title`, `subtitle`, `author`, `client`, `date`, `language`, `confidentiality`, `template`.
+
+For official Chinese document layout, set `template: gongwen-cn`. It also supports `copy_number`, `security_level`, `urgency`, `issuer_number`, `signer`, `issuing_agency`, `cc`, `printing_agency`, and `print_date`. A `date` like `2026-06-03` renders as `2026年6月3日` in this template. The template prefers official local/private fonts and falls back to bundled Fandol and TeX Gyre Termes.
 
 You may omit `language`; it defaults to `zh-CN`. `zh` is accepted and normalized to `zh-CN`.
 
