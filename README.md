@@ -76,8 +76,6 @@ Agent 读取 `build-result.json` 后，必须同时确认 `ok: true` 和 `warnin
 
 默认模板是中文交付报告风格，适合咨询、研究、技术方案和数据分析类正式 PDF。普通用户无需传 `--template`。
 
-需要体制内公文格式时，可在 frontmatter 写 `template: gongwen-cn`，或命令传 `--template gongwen-cn`。该模板使用 A4、公文页边距、3 号正文、固定行距、`-1-` 页码和公文版头/署名/抄送/印发字段。生成时会优先使用本机或私有目录中的真实公文字体，缺失时回退到随包可再分发字体。
-
 ### 典型场景
 
 用户对 Agent 说：
@@ -93,7 +91,6 @@ Agent 搜集资料、组织内容、按 skill 规则写 Markdown、调用 CLI �
 完整规则在 skill 的 `references/report-markdown-contract.md` 里，这里只列关键几条：
 
 - frontmatter 写 title、subtitle、author、date 等元数据
-- 公文模板可额外写 copy_number、security_level、urgency、issuer_number、signer、issuing_agency、cc、printing_agency、print_date；字体优先使用本机真实公文字体，缺失时回退到随包 Fandol 和 TeX Gyre Termes
 - 标题不编号：写 `# 研究背景`，不写 `# 一、研究背景`
 - 表格前加 `表：标题`，图片前加 `图：标题`，公式前加 `公式：标题`
 - 公式用 Typst math 语法，乘号写 `times`，减号和百分号写 `-`、`%`，不要写 `minus`、`percent`
@@ -127,29 +124,6 @@ Q = 0.5 C + 0.3 L + 0.2 S
 $$
 
 阶段判断是：整体进度符合预期，支付模块需要额外一周观察期。
-```
-
-公文示例：
-
-```markdown
----
-title: 关于推进报告生成平台建设的请示
-template: gongwen-cn
-date: 2026-06-03
-copy_number: 000001
-security_level: 秘密
-urgency: 特急
-issuer_number: 示发〔2026〕3号
-signer: 张三
-issuing_agency: 示例机关
-cc: 办公室、财务处
-printing_agency: 示例机关办公室
-print_date: 2026年6月3日
----
-
-# 正文
-
-现将有关事项请示如下。
 ```
 
 ## 仓库边界

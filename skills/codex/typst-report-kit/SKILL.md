@@ -17,7 +17,6 @@ This skill drives the local CLI. It does not research, gather facts, or decide s
 - Keep direct Typst edits for template authors or debugging only.
 - Default to the current project/workspace directory for artifacts.
 - Use the default Chinese delivery-report template unless the user explicitly asks for another template.
-- Use `template: gongwen-cn` only when the user asks for official Chinese document / 公文 formatting.
 
 ## Output Location
 
@@ -30,7 +29,6 @@ Use a stable file name for the editable source, such as `./output_report/content
 For Markdown input, follow `references/report-markdown-contract.md`. If the task needs examples, read `references/examples.md`.
 
 - frontmatter for title, subtitle, author, client, date, language, confidentiality;
-- official document frontmatter may also include copy_number, security_level, urgency, issuer_number, signer, issuing_agency, cc, printing_agency, print_date;
 - unnumbered section headings such as `# 研究背景`; do not write `# 一、研究背景`, `# 1. 研究背景`, or `## （一）研究方法`;
 - `表：` before every Markdown table;
 - keep body tables within 7-8 columns when possible; split, transpose, or move very wide detail tables to an appendix. Use `表[compact]：title` for slightly dense tables and `表[landscape]：title` only when a wide table must remain intact;
