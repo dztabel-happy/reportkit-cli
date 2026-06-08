@@ -25,7 +25,7 @@ You may omit `language`; it defaults to `zh-CN`. `zh` is accepted and normalized
 
 Each warning includes `severity`, `component`, `path`, `message`, and `suggestion`. `ok: true` only means the PDF was produced; it does not mean the report is ready to return. If warnings are present, follow their suggestions, revise the Markdown/report JSON, and rebuild once before returning final output. If a warning is intentionally acceptable, mention it in the final response.
 
-Warnings do not judge whether the source material is true, and they do not decide the user's point of view. They flag report-expression risks: a section with only tables/figures/formulas and no explanatory prose, too many continuous bullet items, checklist-like status bullets such as `- [Done] ...`, excessive callouts, missing captions, wide/dense tables, crowded outlines, or long trailing source lists.
+Warnings do not judge whether the source material is true, and they do not decide the user's point of view. They flag report-expression risks: manually numbered headings, a section with only tables/figures/formulas and no explanatory prose, too many continuous bullet items, checklist-like status bullets such as `- [Done] ...`, excessive callouts, missing captions, wide/dense tables, crowded outlines, or long trailing source lists.
 
 ## Sections
 
@@ -33,6 +33,7 @@ Warnings do not judge whether the source material is true, and they do not decid
 - If frontmatter has no `title`, the first `#` becomes the cover title.
 - Use `##` and `###` for lower levels.
 - Do not manually number headings. Write `# 研究背景与方法论`, not `# 一、研究背景与方法论`; write `## 资料来源`, not `## （一）资料来源`.
+- The importer defensively strips manual heading numbers before rendering so PDF numbering is not duplicated. If the CLI returns `heading_manual_numbering`, revise the Markdown to the suggested unnumbered heading and rebuild once.
 - `###` is allowed when the subsection should appear in the table of contents. If it only groups examples, company tiers, scenarios, or source notes inside a section, prefer a normal list, table rows, or short paragraphs.
 
 ## Blocks

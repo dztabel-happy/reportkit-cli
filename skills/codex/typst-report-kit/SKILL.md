@@ -54,6 +54,8 @@ Before returning the final PDF path, inspect `warnings` in the CLI JSON result o
 
 Treat structural warnings as report-expression feedback, not as factual criticism. They mean the existing content may need clearer prose, fewer checklist-like bullets, fewer callouts, explicit captions, or a better table layout before it becomes a polished formal PDF.
 
+If the CLI returns `heading_manual_numbering`, it has already normalized the rendered title to avoid duplicate numbering. Still revise the Markdown heading to the suggested unnumbered form and rebuild once.
+
 Also inspect `component_counts.callout`. If the report contains callouts and the user did not ask for emphasis boxes, confirm they are only one or two light `note`/`insight` blocks. Rewrite unintended `risk`/`warning` callouts as normal paragraphs or table rows and rebuild before returning.
 
 Avoid these common LLM habits:

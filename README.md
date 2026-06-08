@@ -101,6 +101,7 @@ Agent 搜集资料、组织内容、按 skill 规则写 Markdown、调用 CLI �
 
 - frontmatter 写 title、subtitle、author、date 等元数据
 - 标题不编号：写 `# 研究背景`，不写 `# 一、研究背景`
+- CLI 会防御性移除 `一、`、`1.`、`（一）` 这类标题编号以避免 PDF 重复编号，但会返回 warning；Agent 应按 suggestion 回修 Markdown 并重建
 - 表格前加 `表：标题`，图片前加 `图：标题`，公式前加 `公式：标题`
 - 公式用 Typst math 语法，乘号写 `times`，减号和百分号写 `-`、`%`，不要写 `minus`、`percent`
 - 提示框低频使用；普通结论、建议和风险说明优先写正文、列表或表格。`note/insight` 只用于少量高信号句，`risk/warning` 只在用户明确要求风险/警告提示框时使用
