@@ -24,17 +24,6 @@ Unless the user gives an explicit output path, write report artifacts under `./o
 
 Use a stable file name for the editable source, such as `./output_report/content.md`, and run the CLI with `--out ./output_report`. If `./output_report` already contains a report that should be preserved, use a versioned sibling such as `./output_report_v2`.
 
-## Commands
-
-```bash
-report-kit build content.md --out ./outputs/report
-report-kit build report.json --out ./outputs/report
-report-kit validate report.json
-report-kit preview report.json --out ./outputs/preview
-```
-
-Use `--no-pdf` only when PDF compilation is unavailable or the user explicitly wants JSON / Typst output without PDF.
-
 ## Markdown Contract
 
 For Markdown input, follow `references/report-markdown-contract.md`. If examples help, read `references/examples.md`.
@@ -73,11 +62,18 @@ When the content includes tables, figures, charts, or display equations, add exp
 
 ## CLI Commands
 
+Use these commands in the normal workflow:
+
 ```bash
 report-kit build ./output_report/content.md --out ./output_report
 report-kit build ./output_report/report.json --out ./output_report
-report-kit validate report.json
-report-kit preview report.json --out ./outputs/preview
+```
+
+Use these only when validating or debugging:
+
+```bash
+report-kit validate ./output_report/report.json
+report-kit preview ./output_report/report.json --out ./output_report/preview
 ```
 
 Use `--no-pdf` only when Typst is unavailable or the user explicitly wants JSON/Typst without compiling PDF.
@@ -88,7 +84,7 @@ Use `--no-pdf` only when Typst is unavailable or the user explicitly wants JSON/
 2. Save the draft as `./output_report/content.md`, or use an existing `report.json` when editing a prior build.
 3. Run `report-kit build <input> --out ./output_report` unless the user asked for another path.
 4. Read the JSON result printed by the CLI.
-5. Verify the returned `report_path`, `pdf_path`, and artifact paths. `build-result.json` should match the stdout JSON.
+5. Verify the returned `report_path`, `pdf_path`, and `artifacts.build_result` exist. `build-result.json` should match the stdout JSON.
 6. Inspect `component_counts` and `warnings`.
 7. If `warnings` is non-empty, treat the output as needing revision unless the warning is intentionally acceptable. Follow each warning's `suggestion`, revise the Markdown/report JSON, and rebuild once before returning final output.
 8. Return the PDF path, editable `report.json` path, and any useful diagnostics.
