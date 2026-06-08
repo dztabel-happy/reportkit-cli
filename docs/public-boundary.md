@@ -8,14 +8,15 @@ It contains:
 - the `report-kit` Node.js command shim;
 - public platform package metadata;
 - the Codex skill, Claude Code skill, and their public references;
-- user-facing installation and usage documentation.
+- user-facing installation and usage documentation;
+- lightweight public showcase screenshots used by the README.
 
 It does not contain:
 
 - renderer source code;
 - private templates;
 - schemas;
-- visual regression fixtures;
+- full visual regression fixtures;
 - release pressure tests;
 - built platform binaries;
 - source maps.

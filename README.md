@@ -4,6 +4,15 @@ LLM / Agent 准备内容，ReportKit 负责排版输出 PDF。一个 CLI，接�
 
 > **平台支持：** 当前支持 macOS Apple Silicon (arm64)、Linux x64、Windows x64。推荐显式安装主包和当前平台二进制，避免全局 npm 配置跳过 optional dependencies。
 
+## 效果预览
+
+以下截图来自 `executive-cn` 默认模板的真实回归样例。ReportKit 的默认正式报告路径优先使用正文、普通列表、居中表格、图、公式和代码块；指标卡、术语块、检查清单和提示框不是默认写法。
+
+| | | |
+|---|---|---|
+| <img src="examples/showcase/reference/01-executive-cover.png" alt="ReportKit formal cover" width="260"><br>**正式封面**<br>标题、副标题、日期和元数据层次 | <img src="examples/showcase/reference/02-centered-tables.png" alt="ReportKit centered tables" width="260"><br>**正文与居中表格**<br>正式报告正文节奏和默认表格对齐 | <img src="examples/showcase/reference/03-figure-and-table.png" alt="ReportKit figure and table" width="260"><br>**图表与表格混排**<br>图题、表题和正文间距 |
+| <img src="examples/showcase/reference/04-long-table.png" alt="ReportKit long table" width="260"><br>**长表格**<br>跨页压力、表头重复和列宽分配 | <img src="examples/showcase/reference/05-strategy-consulting.png" alt="ReportKit strategy consulting report" width="260"><br>**咨询/战略报告**<br>执行摘要、方案判断和公式 | <img src="examples/showcase/reference/06-technical-architecture.png" alt="ReportKit technical architecture report" width="260"><br>**技术方案报告**<br>架构职责表和技术说明 |
+
 ## 安装
 
 ```bash
@@ -128,9 +137,9 @@ $$
 
 ## 仓库边界
 
-本仓库是公开入口，包含：npm 包元数据、CLI shim、skill 定义、用户文档。
+本仓库是公开入口，包含：npm 包元数据、CLI shim、skill 定义、用户文档和少量效果预览截图。
 
-不包含：渲染器源码、私有模板、平台二进制、schema、视觉回归样例。平台二进制通过 npm 平台包分发。
+不包含：渲染器源码、私有模板、平台二进制、schema、完整视觉回归样例。平台二进制通过 npm 平台包分发。
 
 ## 版本记录
 
