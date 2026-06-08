@@ -38,6 +38,10 @@ For Markdown input, follow `references/report-markdown-contract.md`. If the task
 
 Keep analysis conclusions, recommendations, field explanations, status notes, and action items as paragraphs, tables, normal lists, or formulas. Do not create glossary/checklist-style blocks in Markdown unless the user provides an existing `report.json` that already uses them.
 
+Do not make a section only a pile of tables, figures, or equations. Add one or two explanatory paragraphs around data blocks when the section needs interpretation, assumptions, conclusions, or risk boundaries. If the section is only raw detail, make it an appendix-like section or accept the related warning explicitly.
+
+Avoid long runs of bullet items. If a section has more than five or six action/status/risk items, use a table or keep only the highest-signal bullets and move background, judgment, and reasoning back into prose. Do not write status bullets such as `- [Done] ...` or `- [通过] ...`; use a table for status tracking.
+
 Use callouts sparingly. For most professional reports, prefer normal paragraphs, lists, or tables. `> [!note]` and `> [!insight]` are acceptable only for one or two high-signal statements that would be missed in normal prose. Do not use `> [!risk]` or `> [!warning]` merely because the report has a risk section; keep ordinary risk analysis in paragraphs or tables. Use `risk` or `warning` callouts only when the user explicitly asks for a visual risk/warning box.
 
 Use `###` only when the subsection deserves to appear in the table of contents. If a heading is only grouping examples, company tiers, scenarios, or source notes inside a section, prefer a normal list, table rows, or short paragraphs so the table of contents stays readable. Keep end-of-report source notes compact; a short paragraph or compact table is usually better than a long trailing bullet list.
@@ -47,6 +51,8 @@ Use `###` only when the subsection deserves to appear in the table of contents. 
 `ok: true` only means the PDF was produced. It is not enough to return success.
 
 Before returning the final PDF path, inspect `warnings` in the CLI JSON result or `build-result.json`. If any warning is present, revise the Markdown/report JSON according to the warning `suggestion` and rebuild once. Return with warnings only when the warning is intentionally acceptable, and mention the remaining warning clearly.
+
+Treat structural warnings as report-expression feedback, not as factual criticism. They mean the existing content may need clearer prose, fewer checklist-like bullets, fewer callouts, explicit captions, or a better table layout before it becomes a polished formal PDF.
 
 Also inspect `component_counts.callout`. If the report contains callouts and the user did not ask for emphasis boxes, confirm they are only one or two light `note`/`insight` blocks. Rewrite unintended `risk`/`warning` callouts as normal paragraphs or table rows and rebuild before returning.
 

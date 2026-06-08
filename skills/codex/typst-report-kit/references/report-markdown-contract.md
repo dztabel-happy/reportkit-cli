@@ -25,6 +25,8 @@ You may omit `language`; it defaults to `zh-CN`. `zh` is accepted and normalized
 
 Each warning includes `severity`, `component`, `path`, `message`, and `suggestion`. `ok: true` only means the PDF was produced; it does not mean the report is ready to return. If warnings are present, follow their suggestions, revise the Markdown/report JSON, and rebuild once before returning final output. If a warning is intentionally acceptable, mention it in the final response.
 
+Warnings do not judge whether the source material is true, and they do not decide the user's point of view. They flag report-expression risks: a section with only tables/figures/formulas and no explanatory prose, too many continuous bullet items, checklist-like status bullets such as `- [Done] ...`, excessive callouts, missing captions, wide/dense tables, crowded outlines, or long trailing source lists.
+
 ## Sections
 
 - If frontmatter has `title`, `#` is a level-1 report section.
@@ -46,6 +48,10 @@ Each warning includes `severity`, `component`, `path`, `message`, and `suggestio
 ```
 
 Prefer plain paragraphs, bullet lists, ordered lists, tables, formulas, and figures for normal consulting-report content. Use tables for field/status/action summaries when structure matters; otherwise use paragraphs or normal lists. Callouts are low-frequency emphasis blocks, not default containers for ordinary conclusions or risks.
+
+Do not make a section only a pile of tables, figures, or formulas. Add one or two explanatory paragraphs around data blocks when interpretation, assumptions, conclusions, or risk boundaries matter. If the section is raw detail, put it in an appendix-like section or accept the warning explicitly.
+
+Avoid long runs of bullet items. More than five or six action/status/risk bullets often reads like a checklist rather than a formal report section. Use a table for status tracking, or keep only high-signal bullets and move the reasoning back into prose.
 
 Do not use `---` as a decorative separator in body content. The CLI tolerates standalone horizontal-rule lines and strips leading decorative `--- ` prefixes, but normal reports should use headings, paragraphs, or natural page flow instead of decorative Markdown rules.
 
@@ -114,6 +120,8 @@ Supported kinds: `note`, `insight`, `risk`, `warning`. Use callouts sparingly. `
 ```
 
 These become `paragraph` or `bullet_list`. If a field glossary or action/status summary needs formal structure, use a table. Explicit `report.json` may still contain legacy `definition_list` and `checklist` blocks; Markdown/skill should not generate them for ordinary reports.
+
+Checklist-like bullets such as `- [通过] CLI 可以生成 PDF` stay as normal bullet items, but the CLI may warn because they visually read like a checklist. Use a table for status tracking, or remove the bracketed status prefix when the item is just a normal point.
 
 ## Negative Examples
 
