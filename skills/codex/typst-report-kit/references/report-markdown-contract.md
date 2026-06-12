@@ -60,7 +60,7 @@ Keep end-of-report source notes compact. A short paragraph or compact table is u
 
 ## Captions
 
-Place captions directly before every table, figure, chart, and display equation. Captions become formal report titles such as `表 2.1` and `图 3.1`, so do not leave them implicit. For figures, keep the image alt text short and different from the formal `图：` caption. Image paths are resolved relative to the Markdown file.
+Place captions directly before every table, figure, chart, and display equation. Captions become formal report titles such as `表 2.1` and `图 3.1`, so do not leave them implicit. For figures, keep the image alt text short and different from the formal `图：` caption. Image paths are resolved relative to the Markdown file. For direct `report.json`, absolute figure paths are accepted only when they stay inside an allowed asset root such as the input file directory, output directory, or built-in example assets.
 
 ```markdown
 表：组件映射表
@@ -77,7 +77,7 @@ Q = 0.5 content + 0.3 layout + 0.2 diagnostics
 $$
 ```
 
-Keep display formulas close to Typst math syntax. Put Chinese explanations in the paragraph or `公式：` caption, use Typst math symbols such as `times` and `dot`, and avoid LaTeX text macros such as `\text{...}` inside `$$ ... $$`. Use real symbols for common operators: write `-`, `+`, `%`, not words such as `minus`, `plus`, or `percent`. For English abbreviations in formulas, keep them as complete identifiers, for example `"ROI"` or `ROI`, not `R O I`. Prefer putting `公式：` before the formula block; if it is immediately after the block, the CLI will attach it to the previous formula.
+Keep display formulas close to Typst math syntax. Put Chinese explanations in the paragraph or `公式：` caption, use Typst math symbols such as `times` and `dot`, and avoid LaTeX text macros such as `\text{...}` inside `$$ ... $$`. Use real symbols for common operators: write `-`, `+`, `%`, not words such as `minus`, `plus`, or `percent`. For English abbreviations in formulas, keep them as complete identifiers, for example `"ROI"` or `ROI`, not `R O I`. Prefer putting `公式：` before the formula block; if it is immediately after the block, the CLI will attach it to the previous formula. Do not put Typst code escapes such as `#read(...)` in formulas; `report.json` formula fields reject `#`.
 
 Good:
 

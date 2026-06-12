@@ -104,6 +104,8 @@ Agent 搜集资料、组织内容、按 skill 规则写 Markdown、调用 CLI �
 - CLI 会防御性移除 `一、`、`1.`、`（一）` 这类标题编号以避免 PDF 重复编号，但会返回 warning；Agent 应按 suggestion 回修 Markdown 并重建
 - 表格前加 `表：标题`，图片前加 `图：标题`，公式前加 `公式：标题`
 - 公式用 Typst math 语法，乘号写 `times`，减号和百分号写 `-`、`%`，不要写 `minus`、`percent`
+- 直接使用 `report.json` 时，`equation.formula` 和 `inline_math.formula` 不能包含 Typst code escape（例如 `#read(...)`）；公式字段只承载 Typst math
+- 图片路径优先写成相对 Markdown / `report.json` 文件目录的路径；绝对路径只允许位于输入目录、输出目录或内置示例资产目录内，避免读取任意本机文件
 - 提示框低频使用；普通结论、建议和风险说明优先写正文、列表或表格。`note/insight` 只用于少量高信号句，`risk/warning` 只在用户明确要求风险/警告提示框时使用
 - 宽表用 `表[landscape]：标题`，紧凑表用 `表[compact]：标题`
 - 术语、状态、行动项优先写成正文、普通列表或表格，不要为了排版效果写成特殊清单

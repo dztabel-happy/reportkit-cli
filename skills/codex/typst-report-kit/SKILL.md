@@ -36,6 +36,8 @@ For Markdown input, follow `references/report-markdown-contract.md`. If the task
 - `公式：` before every display equation `$$ ... $$`; keep the formula body simple and Typst-friendly, use Typst math symbols such as `times` and `dot`, use real symbols for subtraction and percentages such as `-` and `100%`, and put Chinese explanations in surrounding prose or the caption instead of LaTeX text macros such as `\text{...}`;
 - fenced code blocks for JSON/config/code.
 
+For direct `report.json`, formula fields must not contain Typst code escapes such as `#read(...)`; figure paths should be relative to the input file directory unless they are inside an allowed asset root.
+
 Keep analysis conclusions, recommendations, field explanations, status notes, and action items as paragraphs, tables, normal lists, or formulas. Do not create glossary/checklist-style blocks in Markdown unless the user provides an existing `report.json` that already uses them.
 
 Do not make a section only a pile of tables, figures, or equations. Add one or two explanatory paragraphs around data blocks when the section needs interpretation, assumptions, conclusions, or risk boundaries. If the section is only raw detail, make it an appendix-like section or accept the related warning explicitly.

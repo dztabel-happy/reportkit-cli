@@ -39,6 +39,8 @@ Minimum rules:
 - Use fenced code blocks for JSON/config/code.
 - Keep analysis conclusions, recommendations, and value judgments as paragraphs, tables, normal lists, or formulas.
 
+For direct `report.json`, formula fields must not contain Typst code escapes such as `#read(...)`; figure paths should be relative to the input file directory unless they are inside an allowed asset root.
+
 Keep field explanations, status notes, and action items as paragraphs, tables, normal lists, or formulas. Do not create glossary/checklist-style blocks in Markdown unless the user provides an existing `report.json` that already uses them.
 
 Use callouts sparingly. For most professional reports, prefer normal paragraphs, lists, or tables. `> [!note]` and `> [!insight]` are acceptable only for one or two high-signal statements that would be missed in normal prose. Do not use `> [!risk]` or `> [!warning]` merely because the report has a risk section; keep ordinary risk analysis in paragraphs or tables. Use `risk` or `warning` callouts only when the user explicitly asks for a visual risk/warning box.
