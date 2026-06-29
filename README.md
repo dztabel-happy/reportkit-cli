@@ -1,8 +1,23 @@
-# ReportKit
+<h1 align="center">ReportKit</h1>
 
-[English](README.en.md)
+<p align="center">面向 Agent 的正式报告导出工具</p>
 
-ReportKit 是面向 Agent 的正式报告导出工具。
+<p align="center">
+  <a href="README.en.md">English</a>
+  ·
+  <a href="#安装">安装</a>
+  ·
+  <a href="#快速开始">快速开始</a>
+  ·
+  <a href="#效果预览">效果预览</a>
+</p>
+
+<p align="center">
+  <img alt="npm" src="https://img.shields.io/npm/v/@dztabel/reportkit?label=npm">
+  <img alt="platforms" src="https://img.shields.io/badge/platform-macOS%20arm64%20%7C%20Linux%20x64%20%7C%20Windows%20x64-blue">
+</p>
+
+---
 
 用户提供资料或报告目标，Agent 负责整理内容，ReportKit 负责把最终内容导出为排版稳定、可交付的 PDF 报告。
 
@@ -86,28 +101,28 @@ Claude Code skill installed
 
 ## 快速开始
 
-1. 用户带资料生成报告。
+### 1. 用户带资料生成报告
 
 ```text
 $typst-report-kit 请读取我上传的 Excel、PDF 和会议纪要，整理成一份正式项目复盘报告并导出 PDF。
 /typst-report-kit 请读取我上传的 Excel、PDF 和会议纪要，整理成一份正式项目复盘报告并导出 PDF。
 ```
 
-2. 用户只给目标，Agent 自行调研。
+### 2. 用户只给目标，Agent 自行调研
 
 ```text
 $typst-report-kit 请调研国内储能行业最新进展，整理成行业研究报告并导出 PDF。
 /typst-report-kit 请调研国内储能行业最新进展，整理成行业研究报告并导出 PDF。
 ```
 
-3. 用户已有草稿，Agent 重写成可交付报告。
+### 3. 用户已有草稿，Agent 重写成可交付报告
 
 ```text
 $typst-report-kit 请把这份散乱的草稿改写成结构清晰的正式分析报告并导出 PDF。
 /typst-report-kit 请把这份散乱的草稿改写成结构清晰的正式分析报告并导出 PDF。
 ```
 
-4. 用户基于反馈迭代报告。
+### 4. 用户基于反馈迭代报告
 
 ```text
 $typst-report-kit 请把刚才生成的报告压缩到 8 页，第二章改成更适合管理层阅读的版本，并重新导出 PDF。

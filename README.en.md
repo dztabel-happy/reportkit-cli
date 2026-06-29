@@ -1,8 +1,23 @@
-# ReportKit
+<h1 align="center">ReportKit</h1>
 
-[中文](README.md)
+<p align="center">Report export for agents</p>
 
-ReportKit is a report export tool for agents.
+<p align="center">
+  <a href="README.md">中文</a>
+  ·
+  <a href="#install">Install</a>
+  ·
+  <a href="#quick-start">Quick Start</a>
+  ·
+  <a href="#preview">Preview</a>
+</p>
+
+<p align="center">
+  <img alt="npm" src="https://img.shields.io/npm/v/@dztabel/reportkit?label=npm">
+  <img alt="platforms" src="https://img.shields.io/badge/platform-macOS%20arm64%20%7C%20Linux%20x64%20%7C%20Windows%20x64-blue">
+</p>
+
+---
 
 Users provide source material or a report goal. The agent organizes the content, and ReportKit exports the final result as a stable, deliverable PDF report.
 
@@ -86,28 +101,28 @@ Open Claude Code and type `/typst-report-kit`. If you can select the skill, it i
 
 ## Quick Start
 
-1. Generate a report from provided material.
+### 1. Generate a report from provided material
 
 ```text
 $typst-report-kit Read my uploaded Excel, PDF, and meeting notes, then turn them into a formal project review report and export it as PDF.
 /typst-report-kit Read my uploaded Excel, PDF, and meeting notes, then turn them into a formal project review report and export it as PDF.
 ```
 
-2. Research a topic and generate a report.
+### 2. Research a topic and generate a report
 
 ```text
 $typst-report-kit Research recent developments in China's energy storage industry, organize the findings into an industry report, and export it as PDF.
 /typst-report-kit Research recent developments in China's energy storage industry, organize the findings into an industry report, and export it as PDF.
 ```
 
-3. Turn a rough draft into a deliverable report.
+### 3. Turn a rough draft into a deliverable report
 
 ```text
 $typst-report-kit Rewrite this rough draft into a clear formal analysis report and export it as PDF.
 /typst-report-kit Rewrite this rough draft into a clear formal analysis report and export it as PDF.
 ```
 
-4. Revise a generated report from feedback.
+### 4. Revise a generated report from feedback
 
 ```text
 $typst-report-kit Compress the report you just generated to 8 pages, rewrite chapter 2 for management readers, and export a new PDF.
