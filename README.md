@@ -1,15 +1,15 @@
 <h1 align="center">ReportKit</h1>
 
-<p align="center">面向 Agent 的正式报告导出工具</p>
+<p align="center">Report export for agents</p>
 
 <p align="center">
-  <a href="README.en.md">English</a>
+  <a href="README.zh-CN.md">中文</a>
   ·
-  <a href="#安装">安装</a>
+  <a href="#install">Install</a>
   ·
-  <a href="#快速开始">快速开始</a>
+  <a href="#quick-start">Quick Start</a>
   ·
-  <a href="#效果预览">效果预览</a>
+  <a href="#preview">Preview</a>
 </p>
 
 <p align="center">
@@ -19,41 +19,41 @@
 
 ---
 
-用户提供资料或报告目标，Agent 负责整理内容，ReportKit 负责把最终内容导出为排版稳定、可交付的 PDF 报告。
+Users provide source material or a report goal. The agent organizes the content, and ReportKit exports the final result as a stable, deliverable PDF report.
 
-用户可以提供任意可被 Agent 读取和理解的资料，例如：
+Users can provide any material the agent can read and understand, such as:
 
-- 文档、表格、网页、截图或已有报告。
-- 项目材料、调研资料、会议纪要或数据摘要。
-- 一个明确的报告主题，由 Agent 自行检索和整理资料。
+- Documents, spreadsheets, web pages, screenshots, or existing reports.
+- Project materials, research notes, meeting notes, or data summaries.
+- A clear report topic for the agent to research and organize.
 
-## 效果预览
+## Preview
 
-以下截图展示 ReportKit 的默认报告效果。
+These screenshots show ReportKit's default report output.
 
 | | | |
 |:---:|:---:|:---:|
-| <sub><strong>封面</strong></sub> | <sub><strong>正文与表格</strong></sub> | <sub><strong>图表混排</strong></sub> |
-| <img src="examples/showcase/reference/01-executive-cover.png" alt="ReportKit 封面" width="260"> | <img src="examples/showcase/reference/02-centered-tables.png" alt="ReportKit 正文与表格" width="260"> | <img src="examples/showcase/reference/03-figure-and-table.png" alt="ReportKit 图表混排" width="260"> |
-| <sub><strong>长表格</strong></sub> | <sub><strong>战略报告</strong></sub> | <sub><strong>技术报告</strong></sub> |
-| <img src="examples/showcase/reference/04-long-table.png" alt="ReportKit 长表格" width="260"> | <img src="examples/showcase/reference/05-strategy-consulting.png" alt="ReportKit 战略咨询报告" width="260"> | <img src="examples/showcase/reference/06-technical-architecture.png" alt="ReportKit 技术方案报告" width="260"> |
+| <sub><strong>Cover</strong></sub> | <sub><strong>Body and tables</strong></sub> | <sub><strong>Figures and tables</strong></sub> |
+| <img src="examples/showcase/reference/01-executive-cover.png" alt="ReportKit cover" width="260"> | <img src="examples/showcase/reference/02-centered-tables.png" alt="ReportKit body and tables" width="260"> | <img src="examples/showcase/reference/03-figure-and-table.png" alt="ReportKit figures and tables" width="260"> |
+| <sub><strong>Long tables</strong></sub> | <sub><strong>Strategy reports</strong></sub> | <sub><strong>Technical reports</strong></sub> |
+| <img src="examples/showcase/reference/04-long-table.png" alt="ReportKit long tables" width="260"> | <img src="examples/showcase/reference/05-strategy-consulting.png" alt="ReportKit strategy report" width="260"> | <img src="examples/showcase/reference/06-technical-architecture.png" alt="ReportKit technical report" width="260"> |
 
-## 安装
+## Install
 
-### 1. 安装 CLI
+### 1. Install the CLI
 
 ```bash
 npm install -g @dztabel/reportkit
 report-kit --version
 ```
 
-出现类似输出代表 CLI 安装成功：
+Output like this means the CLI is installed:
 
 ```text
 report-kit 0.1.26
 ```
 
-### 2. 安装 Agent skill（二选一）
+### 2. Install one agent skill
 
 #### 2.1 Codex
 
@@ -64,19 +64,19 @@ cd reportkit-cli
 node -e "const fs=require('fs'),os=require('os'),path=require('path');const src=path.join(process.cwd(),'skills','codex','typst-report-kit');const dest=path.join(os.homedir(),'.agents','skills','typst-report-kit');fs.rmSync(dest,{recursive:true,force:true});fs.mkdirSync(path.dirname(dest),{recursive:true});fs.cpSync(src,dest,{recursive:true});console.log('Codex skill installed');"
 ```
 
-检查 Codex skill 是否安装成功，在终端中输入：
+Check the Codex skill in your terminal:
 
 ```bash
 node -e "const fs=require('fs'),os=require('os'),path=require('path');const p=path.join(os.homedir(),'.agents','skills','typst-report-kit','SKILL.md');if(!fs.existsSync(p))process.exit(1);console.log('Codex skill installed');"
 ```
 
-出现以下输出代表成功：
+This output means the skill is installed:
 
 ```text
 Codex skill installed
 ```
 
-打开 Codex 后输入 `$typst-report-kit`。能按 `Tab` 选中该 skill，代表可用。若未出现，按 `Cmd+K` / `Ctrl+K` 选择 `Force Reload Skills`，或重新打开 Codex。
+Open Codex and type `$typst-report-kit`. If you can select the skill with `Tab`, it is ready. If it does not appear, press `Cmd+K` / `Ctrl+K`, choose `Force Reload Skills`, or reopen Codex.
 
 #### 2.2 Claude Code
 
@@ -87,61 +87,61 @@ cd reportkit-cli
 node -e "const fs=require('fs'),os=require('os'),path=require('path');const src=path.join(process.cwd(),'.claude','skills','typst-report-kit');const dest=path.join(os.homedir(),'.claude','skills','typst-report-kit');fs.rmSync(dest,{recursive:true,force:true});fs.mkdirSync(path.dirname(dest),{recursive:true});fs.cpSync(src,dest,{recursive:true});console.log('Claude Code skill installed');"
 ```
 
-检查 Claude Code skill 是否安装成功，在终端中输入：
+Check the Claude Code skill in your terminal:
 
 ```bash
 node -e "const fs=require('fs'),os=require('os'),path=require('path');const p=path.join(os.homedir(),'.claude','skills','typst-report-kit','SKILL.md');if(!fs.existsSync(p))process.exit(1);console.log('Claude Code skill installed');"
 ```
 
-出现以下输出代表成功：
+This output means the skill is installed:
 
 ```text
 Claude Code skill installed
 ```
 
-打开 Claude Code 后输入 `/typst-report-kit`。能选中该 skill，代表可用。若未出现，输入 `/reload-skills` 后重试；旧版本 Claude Code 可重新打开窗口。
+Open Claude Code and type `/typst-report-kit`. If you can select the skill, it is ready. If it does not appear, run `/reload-skills` and try again. Older Claude Code versions may need a new window.
 
-## 快速开始
+## Quick Start
 
-### 1. 用户带资料生成报告
-
-```text
-$typst-report-kit 请读取我上传的 Excel、PDF 和会议纪要，整理成一份正式项目复盘报告并导出 PDF。
-/typst-report-kit 请读取我上传的 Excel、PDF 和会议纪要，整理成一份正式项目复盘报告并导出 PDF。
-```
-
-### 2. 用户只给目标，Agent 自行调研
+### 1. Generate a report from provided material
 
 ```text
-$typst-report-kit 请调研国内储能行业最新进展，整理成行业研究报告并导出 PDF。
-/typst-report-kit 请调研国内储能行业最新进展，整理成行业研究报告并导出 PDF。
+$typst-report-kit Read my uploaded Excel, PDF, and meeting notes, then turn them into a formal project review report and export it as PDF.
+/typst-report-kit Read my uploaded Excel, PDF, and meeting notes, then turn them into a formal project review report and export it as PDF.
 ```
 
-### 3. 用户已有草稿，Agent 重写成可交付报告
+### 2. Research a topic and generate a report
 
 ```text
-$typst-report-kit 请把这份散乱的草稿改写成结构清晰的正式分析报告并导出 PDF。
-/typst-report-kit 请把这份散乱的草稿改写成结构清晰的正式分析报告并导出 PDF。
+$typst-report-kit Research recent developments in China's energy storage industry, organize the findings into an industry report, and export it as PDF.
+/typst-report-kit Research recent developments in China's energy storage industry, organize the findings into an industry report, and export it as PDF.
 ```
 
-### 4. 用户基于反馈迭代报告
+### 3. Turn a rough draft into a deliverable report
 
 ```text
-$typst-report-kit 请把刚才生成的报告压缩到 8 页，第二章改成更适合管理层阅读的版本，并重新导出 PDF。
-/typst-report-kit 请把刚才生成的报告压缩到 8 页，第二章改成更适合管理层阅读的版本，并重新导出 PDF。
+$typst-report-kit Rewrite this rough draft into a clear formal analysis report and export it as PDF.
+/typst-report-kit Rewrite this rough draft into a clear formal analysis report and export it as PDF.
 ```
 
-Agent 会完成资料读取、调研、正文组织、格式约束和 PDF 导出。
+### 4. Revise a generated report from feedback
 
-## 技术细节
+```text
+$typst-report-kit Compress the report you just generated to 8 pages, rewrite chapter 2 for management readers, and export a new PDF.
+/typst-report-kit Compress the report you just generated to 8 pages, rewrite chapter 2 for management readers, and export a new PDF.
+```
 
-Agent 会自动把资料整理成 ReportKit 可处理的中间内容，并调用：
+The agent handles source reading, research, writing, formatting, and PDF export.
+
+## Technical Details
+
+The agent turns the material into ReportKit-ready intermediate content and runs:
 
 ```bash
 report-kit build prepared-report.md --out ./report
 ```
 
-ReportKit 输出：
+ReportKit outputs:
 
 ```text
 report/report.pdf
@@ -152,11 +152,11 @@ report/render-result.json
 report/build-result.json
 ```
 
-## 排障
+## Troubleshooting
 
-当前公开测试版支持 macOS Apple Silicon、Linux x64 和 Windows x64。
+The public beta supports macOS Apple Silicon, Linux x64, and Windows x64.
 
-如果全局 npm 安装跳过了 optional dependencies，显式安装对应平台包：
+If global npm install skips optional dependencies, install the matching platform package explicitly:
 
 ```bash
 # macOS Apple Silicon
@@ -169,22 +169,22 @@ npm install -g @dztabel/reportkit @dztabel/reportkit-linux-x64
 npm install -g @dztabel/reportkit @dztabel/reportkit-win32-x64
 ```
 
-构建失败时，提交 issue 请附：
+When reporting a build failure, include:
 
 - `report-kit --version`
 - `report/build-result.json`
-- 可复现问题的最小 `content.md`
+- A minimal `content.md` that reproduces the issue
 
-## 版本记录
+## Changelog
 
-见 [`CHANGELOG.md`](CHANGELOG.md)。
+See [`CHANGELOG.md`](CHANGELOG.md).
 
-## 仓库范围
+## Repository Scope
 
-本公开仓库包含 npm wrapper 元数据、命令 shim、公开 skills、文档和轻量预览资产。
+This public repository contains npm wrapper metadata, the command shim, public skills, documentation, and lightweight preview assets.
 
-渲染器源码、私有模板、schemas、视觉回归样例和平台二进制不包含在本仓库中。平台二进制通过 npm 平台包分发。
+Renderer source, private templates, schemas, visual regression samples, and platform binaries are not included here. Platform binaries are distributed through npm platform packages.
 
-## 许可
+## License
 
-ReportKit 以专有 CLI 二进制形式通过 npm 分发。本仓库提供用于安装和使用 CLI 的公开 wrapper、skills 和文档。
+ReportKit is distributed through npm as a proprietary CLI binary. This repository provides the public wrapper, skills, and documentation for installing and using the CLI.
