@@ -32,13 +32,13 @@ Users can provide any material the agent can read and understand, such as:
 These screenshots show ReportKit's default report output.
 
 | | | |
-|---|---|---|
+|:---:|:---:|:---:|
 | <img src="examples/showcase/reference/01-executive-cover.png" alt="ReportKit cover" width="260"><br>**Cover** | <img src="examples/showcase/reference/02-centered-tables.png" alt="ReportKit body and tables" width="260"><br>**Body and tables** | <img src="examples/showcase/reference/03-figure-and-table.png" alt="ReportKit figures and tables" width="260"><br>**Figures and tables** |
 | <img src="examples/showcase/reference/04-long-table.png" alt="ReportKit long tables" width="260"><br>**Long tables** | <img src="examples/showcase/reference/05-strategy-consulting.png" alt="ReportKit strategy report" width="260"><br>**Strategy reports** | <img src="examples/showcase/reference/06-technical-architecture.png" alt="ReportKit technical report" width="260"><br>**Technical reports** |
 
 ## Install
 
-1. Install the CLI:
+### 1. Install the CLI
 
 ```bash
 npm install -g @dztabel/reportkit
@@ -51,9 +51,9 @@ Output like this means the CLI is installed:
 report-kit 0.1.26
 ```
 
-2. Install one agent skill.
+### 2. Install one agent skill
 
-2.1 Codex:
+#### 2.1 Codex
 
 ```bash
 git clone https://github.com/dztabel-happy/reportkit-cli.git
@@ -76,7 +76,7 @@ Codex skill installed
 
 Open Codex and type `$typst-report-kit`. If you can select the skill with `Tab`, it is ready. If it does not appear, press `Cmd+K` / `Ctrl+K`, choose `Force Reload Skills`, or reopen Codex.
 
-2.2 Claude Code:
+#### 2.2 Claude Code
 
 ```bash
 git clone https://github.com/dztabel-happy/reportkit-cli.git

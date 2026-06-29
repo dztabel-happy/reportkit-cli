@@ -32,13 +32,13 @@
 以下截图展示 ReportKit 的默认报告效果。
 
 | | | |
-|---|---|---|
+|:---:|:---:|:---:|
 | <img src="examples/showcase/reference/01-executive-cover.png" alt="ReportKit 封面" width="260"><br>**封面** | <img src="examples/showcase/reference/02-centered-tables.png" alt="ReportKit 正文与表格" width="260"><br>**正文与表格** | <img src="examples/showcase/reference/03-figure-and-table.png" alt="ReportKit 图表混排" width="260"><br>**图表混排** |
 | <img src="examples/showcase/reference/04-long-table.png" alt="ReportKit 长表格" width="260"><br>**长表格** | <img src="examples/showcase/reference/05-strategy-consulting.png" alt="ReportKit 战略咨询报告" width="260"><br>**战略报告** | <img src="examples/showcase/reference/06-technical-architecture.png" alt="ReportKit 技术方案报告" width="260"><br>**技术报告** |
 
 ## 安装
 
-1. 安装 CLI：
+### 1. 安装 CLI
 
 ```bash
 npm install -g @dztabel/reportkit
@@ -51,9 +51,9 @@ report-kit --version
 report-kit 0.1.26
 ```
 
-2. 安装 Agent skill（二选一）。
+### 2. 安装 Agent skill（二选一）
 
-2.1 Codex：
+#### 2.1 Codex
 
 ```bash
 git clone https://github.com/dztabel-happy/reportkit-cli.git
@@ -76,7 +76,7 @@ Codex skill installed
 
 打开 Codex 后输入 `$typst-report-kit`。能按 `Tab` 选中该 skill，代表可用。若未出现，按 `Cmd+K` / `Ctrl+K` 选择 `Force Reload Skills`，或重新打开 Codex。
 
-2.2 Claude Code：
+#### 2.2 Claude Code
 
 ```bash
 git clone https://github.com/dztabel-happy/reportkit-cli.git
