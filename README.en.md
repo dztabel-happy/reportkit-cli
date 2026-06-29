@@ -33,10 +33,10 @@ These screenshots show ReportKit's default report output.
 
 | | | |
 |:---:|:---:|:---:|
-| <img src="examples/showcase/reference/01-executive-cover.png" alt="ReportKit cover" width="260"> | <img src="examples/showcase/reference/02-centered-tables.png" alt="ReportKit body and tables" width="260"> | <img src="examples/showcase/reference/03-figure-and-table.png" alt="ReportKit figures and tables" width="260"> |
 | <sub><strong>Cover</strong></sub> | <sub><strong>Body and tables</strong></sub> | <sub><strong>Figures and tables</strong></sub> |
-| <img src="examples/showcase/reference/04-long-table.png" alt="ReportKit long tables" width="260"> | <img src="examples/showcase/reference/05-strategy-consulting.png" alt="ReportKit strategy report" width="260"> | <img src="examples/showcase/reference/06-technical-architecture.png" alt="ReportKit technical report" width="260"> |
+| <img src="examples/showcase/reference/01-executive-cover.png" alt="ReportKit cover" width="260"> | <img src="examples/showcase/reference/02-centered-tables.png" alt="ReportKit body and tables" width="260"> | <img src="examples/showcase/reference/03-figure-and-table.png" alt="ReportKit figures and tables" width="260"> |
 | <sub><strong>Long tables</strong></sub> | <sub><strong>Strategy reports</strong></sub> | <sub><strong>Technical reports</strong></sub> |
+| <img src="examples/showcase/reference/04-long-table.png" alt="ReportKit long tables" width="260"> | <img src="examples/showcase/reference/05-strategy-consulting.png" alt="ReportKit strategy report" width="260"> | <img src="examples/showcase/reference/06-technical-architecture.png" alt="ReportKit technical report" width="260"> |
 
 ## Install
 
