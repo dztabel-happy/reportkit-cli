@@ -33,8 +33,8 @@
 
 | | | |
 |:---:|:---:|:---:|
-| <img src="examples/showcase/reference/01-executive-cover.png" alt="ReportKit 封面" width="260"><br>**封面** | <img src="examples/showcase/reference/02-centered-tables.png" alt="ReportKit 正文与表格" width="260"><br>**正文与表格** | <img src="examples/showcase/reference/03-figure-and-table.png" alt="ReportKit 图表混排" width="260"><br>**图表混排** |
-| <img src="examples/showcase/reference/04-long-table.png" alt="ReportKit 长表格" width="260"><br>**长表格** | <img src="examples/showcase/reference/05-strategy-consulting.png" alt="ReportKit 战略咨询报告" width="260"><br>**战略报告** | <img src="examples/showcase/reference/06-technical-architecture.png" alt="ReportKit 技术方案报告" width="260"><br>**技术报告** |
+| <img src="examples/showcase/reference/01-executive-cover.png" alt="ReportKit 封面" width="260"><br><sub><strong>封面</strong></sub> | <img src="examples/showcase/reference/02-centered-tables.png" alt="ReportKit 正文与表格" width="260"><br><sub><strong>正文与表格</strong></sub> | <img src="examples/showcase/reference/03-figure-and-table.png" alt="ReportKit 图表混排" width="260"><br><sub><strong>图表混排</strong></sub> |
+| <img src="examples/showcase/reference/04-long-table.png" alt="ReportKit 长表格" width="260"><br><sub><strong>长表格</strong></sub> | <img src="examples/showcase/reference/05-strategy-consulting.png" alt="ReportKit 战略咨询报告" width="260"><br><sub><strong>战略报告</strong></sub> | <img src="examples/showcase/reference/06-technical-architecture.png" alt="ReportKit 技术方案报告" width="260"><br><sub><strong>技术报告</strong></sub> |
 
 ## 安装
 
