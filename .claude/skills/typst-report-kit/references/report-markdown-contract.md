@@ -46,8 +46,18 @@ Warnings do not judge whether the source material is true, and they do not decid
 
 - If frontmatter has `title`, `#` is a level-1 report section.
 - If frontmatter has no `title`, the first `#` becomes the cover title.
-- Use `##` and `###` for lower levels.
+- Use `##` and `###` for lower levels. Long chapters should be split into `##` subsections — the template numbers them 2.1 / 2.2 automatically and the TOC nests them. A report where every chapter is a flat `#` reads like an outline and triggers `flat_section_structure`:
+
+```markdown
+# 市场规模与需求结构
+
+## 渗透率走势
+
+## 区域结构变化
+```
+
 - Do not manually number headings. Write `# 研究背景与方法论`, not `# 一、研究背景与方法论`; write `## 资料来源`, not `## （一）资料来源`.
+- Do not pad structure the other way either: many level-1 chapters each carrying exactly one `##` subsection reads as mechanical nesting (`mechanical_section_nesting`). Prefer fewer chapters, each with several subsections.
 - The importer defensively strips manual heading numbers before rendering so PDF numbering is not duplicated. If the CLI returns `heading_manual_numbering`, revise the Markdown to the suggested unnumbered heading and rebuild once.
 - `###` is allowed when the subsection should appear in the table of contents. If it only groups examples, company tiers, scenarios, or source notes inside a section, prefer a normal list, table rows, or short paragraphs.
 

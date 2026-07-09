@@ -39,7 +39,7 @@ Use a stable file name for the editable source, such as `./output_report/content
 For Markdown input, follow `references/report-markdown-contract.md`. If the task needs examples, read `references/examples.md`.
 
 - frontmatter for title, subtitle, author, client, date, language, confidentiality;
-- unnumbered section headings such as `# 研究背景`; do not write `# 一、研究背景`, `# 1. 研究背景`, or `## （一）研究方法`;
+- headings are unnumbered (`# 研究背景`, never `# 一、研究背景` or `## （一）研究方法`), and long chapters get real `##` subsections — the template numbers them 2.1 / 2.2 automatically and the TOC nests them. A report where every chapter is a flat `#` reads like an outline, not a formal report;
 - `表：` before every Markdown table;
 - table font size is automatic (normal size first, compact tier only when the measured content cannot fit) — never try to control it; `表[compact]：` no longer changes anything and triggers a warning. Use `表[landscape]：title` only when a wide table must remain intact;
 - introduce each table/figure in the prose before it appears, referencing it as `见表 x.x` / `如图 x.x` — these become clickable cross-references in the PDF. Chapter numbering counts every level-1 `#` section from 1 (an opening `# 执行摘要` is chapter 1), and table/figure/equation numbers follow their chapter;
