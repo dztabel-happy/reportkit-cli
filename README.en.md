@@ -50,7 +50,7 @@ report-kit --version
 Output like this means the CLI is installed:
 
 ```text
-report-kit 0.1.26
+report-kit 0.1.27
 ```
 
 ### 2. Install one agent skill
@@ -134,6 +134,13 @@ $typst-report-kit Compress the report you just generated to 8 pages, rewrite cha
 The agent handles source reading, research, writing, formatting, and PDF export.
 
 ## Technical Details
+
+Layout quality is guaranteed by ReportKit itself:
+
+- Tables, figures, and equations are auto-numbered per chapter (表 2.1 / 图 3.1), and prose references such as 见表 x.x / 如图 x.x / 式 x.x render as clickable cross-references.
+- Ordered entries in a final 资料来源 (sources) chapter render as [1] [2] reference entries, and inline [n] citations become clickable superscripts.
+- Table column widths and font size are resolved from measured content: descriptive columns widen, short columns stay compact, and the dense tier is used only when content cannot fit.
+- Builds return structured errors/warnings: provable defects such as dangling references fail the build with actionable fix hints.
 
 The agent turns the material into ReportKit-ready intermediate content and runs:
 

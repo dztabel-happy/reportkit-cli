@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.27
+
+- 题注编号与正文交叉引用：表/图/公式按章自动编号，正文"见表 x.x / 如图 x.x / 式 x.x"渲染为可点击链接；悬空引用成为 error 级门禁并列出实际存在的编号。
+- 参考文献体系：文末"资料来源"章节的有序条目自动转为 `source_list`，渲染为 [1] [2] 参考文献条目（支持 `[名称](url)` 链接）；正文 `[n]` 引用渲染为可点击上标，超范围引用报错。
+- 列宽算法重写：基于文字度量（中文按双宽）与换行规划的多目标成本优化，说明列自动加宽、短列保持紧凑；表格字号改为自动决定，`表[compact]` 不再改变字号并提示移除。
+- 内容门禁对齐 DocxKit：新增 unreferenced_caption、table_consider_landscape（实测替代字符数猜测）、flat_section_structure、mechanical_section_nesting、表格行列不匹配等检查；build 返回结构化 `errors` 字段，新增 `--strict`。
+- 修复 minimal-cn 模板表/图计数器不随章节重置的编号错误。
+
 ## 0.1.26
 
 - 增强 CLI `--help` 和各子命令帮助，明确 Agent 推荐入口、参数边界和输出文件。

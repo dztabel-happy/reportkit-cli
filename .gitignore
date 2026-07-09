@@ -4,3 +4,4 @@ npm/platform-packages/*/report-kit.exe
 .DS_Store
 *.tgz
 .ace-tool/
+.npmrc
