@@ -50,7 +50,7 @@ report-kit --version
 Output like this means the CLI is installed:
 
 ```text
-report-kit 0.1.28
+report-kit 0.1.29
 ```
 
 ### 2. Install one agent skill
@@ -160,6 +160,21 @@ report/build-result.json
 ```
 
 ## Troubleshooting
+
+### Linux Fonts
+
+Templates default to a Kai (楷体) body and Times New Roman for Latin text. Linux distributions ship neither; install once:
+
+```bash
+sudo apt-get install -y fonts-arphic-ukai fonts-noto-cjk ttf-mscorefonts-installer fonts-dejavu-core
+```
+
+- Kai body: `fonts-arphic-ukai` provides AR PL UKai CN (classic upright Kai, first choice, GPL). Prefer a softer modern look? Use LXGW WenKai (SIL OFL): download the TTFs and point `TYPST_FONT_PATHS` at their directory.
+- Latin: `ttf-mscorefonts-installer` is Microsoft's official Core Fonts (free under its EULA) and yields the real Times New Roman, matching the template's first choice; `fonts-liberation` (Liberation Serif) is the metric-compatible fallback when offline.
+- Bring your own fonts (macOS STKaiti, Windows KaiTi, commercial Kai faces): drop them in any directory and set `TYPST_FONT_PATHS=/path/to/fonts`. Note that Typst matches real font family names and ignores fontconfig aliases.
+- Gates: when every Kai candidate is missing the build returns a `kai_font_fallback` warning (body degrades to a Song look); when no CJK font exists at all it returns `cjk_font_missing` (tofu risk).
+
+### Platform packages
 
 The public beta supports macOS Apple Silicon, Linux x64, and Windows x64.
 

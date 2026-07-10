@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.29
+
+- 根治 Linux 字体回退：楷体备选链加入 Linux 可自由获得的 AR PL UKai CN（fonts-arphic-ukai）与 LXGW WenKai（霞鹜文楷），有更好的楷体就用、没有才退宋体系兜底；等宽栈加入 DejaVu Sans Mono / Liberation Mono。
+- 新增 `kai_font_fallback` 警告：楷体候选全部缺失、正文退为宋体观感时明确提示（区别于完全无中文字体的 `cjk_font_missing`）。
+- README 新增 Linux 字体标准安装方案：西文首选 MS Core Fonts（真 Times New Roman），楷体首选 fonts-arphic-ukai，自备字体走 TYPST_FONT_PATHS（Typst 按真实 family name 匹配，不认 fontconfig 别名）。
+- CI 三平台安装楷体字体，发布前验证真实楷体渲染。
+
 ## 0.1.28
 
 - 新增图目录/表目录：frontmatter `list_of_figures: true` / `list_of_tables: true` 在主目录后追加 图目录/表目录，条目带页码并可跳转到题注。

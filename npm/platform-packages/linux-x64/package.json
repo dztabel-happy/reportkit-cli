@@ -1,6 +1,6 @@
 {
   "name": "@dztabel/reportkit-linux-x64",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "description": "Linux x64 ReportKit binary with bundled Typst runtime.",
   "license": "UNLICENSED",
   "publishConfig": {

@@ -11,7 +11,7 @@ This skill drives the local CLI. It does not research, gather facts, or decide s
 
 ## Requirements
 
-This skill matches `@dztabel/reportkit >= 0.1.28`. Ensure the CLI is current before building:
+This skill matches `@dztabel/reportkit >= 0.1.29`. Ensure the CLI is current before building:
 
 ```bash
 report-kit --version
@@ -67,6 +67,8 @@ Use `###` only when the subsection deserves to appear in the table of contents. 
 Error-level checks fail the build (`ok: false`, exit code 1): dangling `表/图/式 x.x` references, `[n]` beyond the source list, and table rows wider than the header. Fix the content at the reported `path` and rebuild — never work around the gate. `dangling_caption_reference` messages list the document's actual auto-generated numbers; copy from there instead of guessing, or write the skeleton first, build once, then fill in references.
 
 Before returning the final PDF path, inspect `errors` and `warnings` in the CLI JSON result or `build-result.json`. If any warning is present, revise the Markdown/report JSON according to the warning `suggestion` and rebuild once. Return with warnings only when the warning is intentionally acceptable, and mention the remaining warning clearly. Pass `--strict` to promote warning-level checks to failures in CI/batch pipelines.
+
+If the build returns `cjk_font_missing` or `kai_font_fallback`, the machine lacks the template's fonts — the PDF still builds but its look degrades (tofu boxes / Song instead of Kai). Follow the suggestion: on Linux install `fonts-arphic-ukai` (and `fonts-noto-cjk`), or point `TYPST_FONT_PATHS` at a font directory, then rebuild; if the degraded look is acceptable, say so when delivering.
 
 Treat structural warnings as report-expression feedback, not as factual criticism. They mean the existing content may need clearer prose, fewer checklist-like bullets, fewer callouts, explicit captions, or a better table layout before it becomes a polished formal PDF.
 

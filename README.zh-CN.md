@@ -50,7 +50,7 @@ report-kit --version
 出现类似输出代表 CLI 安装成功：
 
 ```text
-report-kit 0.1.28
+report-kit 0.1.29
 ```
 
 ### 2. 安装 Agent skill（二选一）
@@ -160,6 +160,21 @@ report/build-result.json
 ```
 
 ## 排障
+
+### Linux 字体
+
+模板默认为楷体正文、Times New Roman 西文。Linux 发行版不自带这些字体，推荐一次性安装：
+
+```bash
+sudo apt-get install -y fonts-arphic-ukai fonts-noto-cjk ttf-mscorefonts-installer fonts-dejavu-core
+```
+
+- 楷体：`fonts-arphic-ukai` 提供 AR PL UKai CN（端正传统楷体，首选，GPL）。偏好柔和现代风格可改用霞鹜文楷（LXGW WenKai，SIL OFL）：从其发布页下载 TTF 放入 `TYPST_FONT_PATHS` 指向的目录。
+- 西文：`ttf-mscorefonts-installer` 是微软官方 Core Fonts（EULA 允许免费使用），装上即得真 Times New Roman，命中模板首选；无法联网安装时 `fonts-liberation`（Liberation Serif）作为度量兼容兜底。
+- 自备字体（macOS 华文楷体、Windows 楷体、商业楷体等）放入任意目录后设置 `TYPST_FONT_PATHS=/path/to/fonts` 即可。注意：Typst 按字体真实 family name 匹配，不识别 fontconfig 别名。
+- 门禁提示：楷体候选全部缺失时构建返回 `kai_font_fallback` 警告（正文退为宋体观感）；完全没有中文字体时返回 `cjk_font_missing`（方块字风险）。
+
+### 平台包
 
 当前公开测试版支持 macOS Apple Silicon、Linux x64 和 Windows x64。
 
