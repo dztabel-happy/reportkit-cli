@@ -5,7 +5,11 @@
 - 根治 Linux 字体回退：楷体备选链加入 Linux 可自由获得的 AR PL UKai CN（fonts-arphic-ukai）与 LXGW WenKai（霞鹜文楷），有更好的楷体就用、没有才退宋体系兜底；等宽栈加入 DejaVu Sans Mono / Liberation Mono。
 - 新增 `kai_font_fallback` 警告：楷体候选全部缺失、正文退为宋体观感时明确提示（区别于完全无中文字体的 `cjk_font_missing`）。
 - README 新增 Linux 字体标准安装方案：西文首选 MS Core Fonts（真 Times New Roman），楷体首选 fonts-arphic-ukai，自备字体走 TYPST_FONT_PATHS（Typst 按真实 family name 匹配，不认 fontconfig 别名）。
-- CI 三平台安装楷体字体，发布前验证真实楷体渲染。
+- CI 三平台统一下载固定版本楷体/宋体字体（sha256 校验）验证真实楷体渲染；macOS 跑器同样无中文字体，系统字体不可依赖。
+- 安全加固（外部审查修复）：`figure.width` 只接受明确的长度/百分比语法，阻断 Typst 代码注入；未闭合 frontmatter 现在报错而不是静默吞掉全文；题注只对紧邻的下一个块生效，不再跨章节错误附着（新增 caption_without_target 警告）。
+- 排版修复：图与图题强制同页，不再被分页拆开。
+- 契约修复：`--strict` 提升的检查在 errors 中以 error 级呈现，符合 build-result schema；移除从未生效的 theme.accent/theme.density 字段；模板 manifest 补上 source_list。
+- 供应链加固：Typst 运行时与 CI 字体下载全部固定 sha256 并强制校验；GitHub Actions 固定完整 commit SHA、声明最小权限；发布门禁（版本锁步/skill 漂移/包边界）在 CI 强制执行，skill 漂移改为内容哈希比较。
 
 ## 0.1.28
 
