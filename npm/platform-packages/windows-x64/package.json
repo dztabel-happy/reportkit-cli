@@ -1,6 +1,6 @@
 {
   "name": "@dztabel/reportkit-win32-x64",
-  "version": "0.1.27",
+  "version": "0.1.28",
   "description": "Windows x64 ReportKit binary with bundled Typst runtime.",
   "license": "UNLICENSED",
   "publishConfig": {

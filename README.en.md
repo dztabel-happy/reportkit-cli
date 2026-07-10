@@ -50,7 +50,7 @@ report-kit --version
 Output like this means the CLI is installed:
 
 ```text
-report-kit 0.1.27
+report-kit 0.1.28
 ```
 
 ### 2. Install one agent skill

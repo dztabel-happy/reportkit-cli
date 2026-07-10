@@ -15,9 +15,11 @@ confidentiality: 内部资料
 ---
 ```
 
-Supported keys: `title`, `subtitle`, `author`, `client`, `date`, `language`, `confidentiality`.
+Supported keys: `title`, `subtitle`, `author`, `client`, `date`, `language`, `confidentiality`, `list_of_figures`, `list_of_tables`.
 
 You may omit `language`; it defaults to `zh-CN`. `zh` is accepted and normalized to `zh-CN`.
+
+Set `list_of_figures: true` / `list_of_tables: true` to append 图目录 / 表目录 after the main TOC. Entries show the caption number, title, and page number, and jump to the caption. Enable them only for figure/table-heavy reports.
 
 ## Build Diagnostics
 
@@ -85,7 +87,7 @@ Do not use `---` as a decorative separator in body content. The CLI tolerates st
 
 Place captions directly before every table, figure, chart, and display equation. Captions become formal report titles such as `表 2.1` and `图 3.1`, so do not leave them implicit. For figures, keep the image alt text short and different from the formal `图：` caption. Image paths are resolved relative to the Markdown file. For direct `report.json`, absolute figure paths are accepted only when they stay inside an allowed asset root such as the input file directory, output directory, or built-in example assets.
 
-Introduce every table or figure in the surrounding prose before it appears, referencing it as `见表 x.x` / `如图 x.x` / `式 x.x` — these render as clickable cross-references that jump to the block. Professional reports should not show a table or figure first and then explain it afterward.
+Introduce every table or figure in the surrounding prose before it appears, referencing it as `见表 x.x` / `如图 x.x` / `式 x.x` — these render as clickable cross-references that jump to the block (references written inside table cells are linked too). Professional reports should not show a table or figure first and then explain it afterward.
 
 Chapter numbering counts every level-1 section from 1 — an opening `# 执行摘要` or `# 导论` **is chapter 1**, pushing later chapters up. Table/figure/equation numbers follow their chapter (`表 2.1` = first table in chapter 2). When a `dangling_caption_reference` error fires, its message lists the actual numbers that exist — copy from there instead of guessing, or write the skeleton first, build once, then fill in references.
 
@@ -111,7 +113,7 @@ Put source material in a final `# 资料来源` section (参考文献 / referenc
 2. [行业协会研究报告](https://example.com/report)，行业资料，2026-07-02 访问。
 ```
 
-Do not paste naked long URLs into prose or tables. Use `[来源名称](URL)` in the source list. Inline `[1]` / `[2]` citations become clickable superscript references that jump to the entry. A `[n]` beyond the number of entries fails the build with `dangling_source_reference`.
+Do not paste naked long URLs into prose or tables. Use `[来源名称](URL)` in the source list. Inline `[1]` / `[2]` citations become clickable superscript references that jump to the entry — inside table cells as well. A `[n]` beyond the number of entries fails the build with `dangling_source_reference`.
 
 ```markdown
 表：组件映射表
