@@ -11,7 +11,7 @@ This skill drives the local CLI. It does not research, gather facts, or decide s
 
 ## Requirements
 
-This skill matches `@dztabel/reportkit >= 0.1.29`. Ensure the CLI is current before building:
+This skill matches `@dztabel/reportkit >= 0.1.30`. Ensure the CLI is current before building:
 
 ```bash
 report-kit --version

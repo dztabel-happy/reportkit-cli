@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.30
+
+- 输出契约升级为 cli-contract 0.2：`build` 结果新增必填 `input_sha256`（输入文件字节的 SHA-256），供上游系统做"这个 PDF 确实由这份输入生成"的 provenance 校验；构建只读取输入字节一次，解析与摘要绑定同一份字节。
+- 路径语义与 0.1 完全一致：`input_path`/`output_dir`/产物路径按调用方提供的形式原样回显，不做绝对化、不解开符号链接；迁移说明见 core 仓库 docs/cli-output-contract.md 的契约版本历史。
+- Markdown 题注支持通用编号写法：`图 1.1：年度趋势` / `表 2.1：方法比较` 与无编号写法等效，外部编号在导入时丢弃，由 ReportKit 统一编号。
+
 ## 0.1.29
 
 - 根治 Linux 字体回退：楷体备选链加入 Linux 可自由获得的 AR PL UKai CN（fonts-arphic-ukai）与 LXGW WenKai（霞鹜文楷），有更好的楷体就用、没有才退宋体系兜底；等宽栈加入 DejaVu Sans Mono / Liberation Mono。
